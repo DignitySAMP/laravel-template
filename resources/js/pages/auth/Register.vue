@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import InputError from '@/components/InputError.vue';
-import TextLink from '@/components/TextLink.vue';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Spinner } from '@/components/ui/spinner';
+import AppButton from '@/components/AppButton.vue';
+import AppInput from '@/components/AppInput.vue';
+import AppLink from '@/components/AppLink.vue';
 import AuthBase from '@/layouts/AuthLayout.vue';
 import { login } from '@/routes';
 import { store } from '@/routes/register';
@@ -26,82 +23,74 @@ import { Form, Head } from '@inertiajs/vue3';
         >
             <div class="grid gap-6">
                 <div class="grid gap-2">
-                    <Label for="name">Name</Label>
-                    <Input
-                        id="name"
-                        type="text"
-                        required
-                        autofocus
-                        :tabindex="1"
-                        autocomplete="name"
+                    <AppInput
                         name="name"
+                        label="Name"
+                        type="text"
                         placeholder="Full name"
+                        :autofocus="true"
+                        autocomplete="name"
+                        :error="errors.name"
+                        :required="true"
                     />
-                    <InputError :message="errors.name" />
                 </div>
 
                 <div class="grid gap-2">
-                    <Label for="email">Email address</Label>
-                    <Input
-                        id="email"
-                        type="email"
-                        required
-                        :tabindex="2"
-                        autocomplete="email"
+                    <AppInput
                         name="email"
+                        label="Email address"
+                        type="email"
                         placeholder="email@example.com"
+                        :autofocus="true"
+                        autocomplete="email"
+                        :error="errors.email"
+                        :required="true"
                     />
-                    <InputError :message="errors.email" />
                 </div>
 
                 <div class="grid gap-2">
-                    <Label for="password">Password</Label>
-                    <Input
-                        id="password"
-                        type="password"
-                        required
-                        :tabindex="3"
-                        autocomplete="new-password"
+                    <AppInput
                         name="password"
+                        type="password"
                         placeholder="Password"
+                        label="Password"
+                        :autofocus="true"
+                        autocomplete="current-password"
+                        :error="errors.password"
+                        :required="true"
                     />
-                    <InputError :message="errors.password" />
                 </div>
 
                 <div class="grid gap-2">
-                    <Label for="password_confirmation">Confirm password</Label>
-                    <Input
-                        id="password_confirmation"
-                        type="password"
-                        required
-                        :tabindex="4"
-                        autocomplete="new-password"
+                    <AppInput
                         name="password_confirmation"
-                        placeholder="Confirm password"
+                        type="password"
+                        placeholder="Password"
+                        label="Confirm password"
+                        :autofocus="true"
+                        autocomplete="new-password"
+                        :error="errors.password_confirmation"
+                        :required="true"
                     />
-                    <InputError :message="errors.password_confirmation" />
                 </div>
 
-                <Button
+                <AppButton
+                    name="register-button"
                     type="submit"
-                    class="mt-2 w-full"
-                    tabindex="5"
                     :disabled="processing"
-                    data-test="register-user-button"
-                >
-                    <Spinner v-if="processing" />
-                    Create account
-                </Button>
+                    text="Create account"
+                />
             </div>
 
             <div class="text-center text-sm text-muted-foreground">
                 Already have an account?
-                <TextLink
+                <AppLink
                     :href="login()"
                     class="underline underline-offset-4"
                     :tabindex="6"
-                    >Log in</TextLink
                 >
+                    Log in
+                </AppLink>
             </div>
         </Form>
     </AuthBase>
