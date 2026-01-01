@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import TextLink from '@/components/TextLink.vue'
-import { Button } from '@/components/ui/button'
-import { Spinner } from '@/components/ui/spinner'
+import AppButton from '@/components/AppButton.vue'
+import AppLink from '@/components/AppLink.vue'
 import AuthLayout from '@/layouts/AuthLayout.vue'
 import { logout } from '@/routes'
 import { send } from '@/routes/verification'
@@ -32,21 +31,21 @@ defineProps<{
 			class="space-y-6 text-center"
 			v-slot="{ processing }"
 		>
-			<Button
+			<AppButton
+				name="btn-send-verification"
+				type="submit"
 				:disabled="processing"
 				variant="secondary"
-			>
-				<Spinner v-if="processing" />
-				Resend verification email
-			</Button>
+				text="Resend verification email"
+			/>
 
-			<TextLink
+			<AppLink
 				:href="logout()"
 				as="button"
 				class="mx-auto block text-sm"
 			>
 				Log out
-			</TextLink>
+			</AppLink>
 		</Form>
 	</AuthLayout>
 </template>
