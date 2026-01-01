@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import InputError from '@/components/InputError.vue'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Spinner } from '@/components/ui/spinner'
+import AppButton from '@/components/AppButton.vue'
+import AppInput from '@/components/AppInput.vue'
 import AuthLayout from '@/layouts/AuthLayout.vue'
 import { update } from '@/routes/password'
 import { Form, Head } from '@inertiajs/vue3'
@@ -32,58 +29,51 @@ const inputEmail = ref(props.email)
 		>
 			<div class="grid gap-6">
 				<div class="grid gap-2">
-					<Label for="email">Email</Label>
-					<Input
-						id="email"
-						type="email"
+					<AppInput
 						name="email"
+						label="Email address"
+						type="email"
+						placeholder="email@example.com"
+						:autofocus="true"
 						autocomplete="email"
+						:error="errors.email"
+						:required="true"
 						v-model="inputEmail"
-						class="mt-1 block w-full"
-						readonly
-					/>
-					<InputError
-						:message="errors.email"
-						class="mt-2"
 					/>
 				</div>
 
 				<div class="grid gap-2">
-					<Label for="password">Password</Label>
-					<Input
-						id="password"
-						type="password"
+					<AppInput
 						name="password"
-						autocomplete="new-password"
-						class="mt-1 block w-full"
-						autofocus
+						type="password"
 						placeholder="Password"
+						label="Password"
+						:autofocus="true"
+						autocomplete="new-password"
+						:error="errors.password"
+						:required="true"
 					/>
-					<InputError :message="errors.password" />
 				</div>
 
 				<div class="grid gap-2">
-					<Label for="password_confirmation">Confirm Password</Label>
-					<Input
-						id="password_confirmation"
-						type="password"
+					<AppInput
 						name="password_confirmation"
+						type="password"
+						placeholder="Password"
+						label="Confirm password"
+						:autofocus="true"
 						autocomplete="new-password"
-						class="mt-1 block w-full"
-						placeholder="Confirm password"
+						:error="errors.password_confirmation"
+						:required="true"
 					/>
-					<InputError :message="errors.password_confirmation" />
 				</div>
 
-				<Button
+				<AppButton
+					name="btn-reset-password"
 					type="submit"
-					class="mt-4 w-full"
 					:disabled="processing"
-					data-test="reset-password-button"
-				>
-					<Spinner v-if="processing" />
-					Reset password
-				</Button>
+					text="Reset password"
+				/>
 			</div>
 		</Form>
 	</AuthLayout>
