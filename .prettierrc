@@ -1,20 +1,24 @@
 {
-    "semi": true,
+    "$schema": "https://json.schemastore.org/prettierrc",
+    "trailingComma": "es5",
+    "semi": false,
+    "tabWidth": 4,
+    "useTabs": true,
     "singleQuote": true,
-    "singleAttributePerLine": false,
-    "htmlWhitespaceSensitivity": "css",
-    "printWidth": 80,
-    "plugins": [
-        "prettier-plugin-organize-imports",
-        "prettier-plugin-tailwindcss"
-    ],
+    "printWidth": 100,
+    "singleAttributePerLine": true,
+    "vueIndentScriptAndStyle": false,
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "bracketSameLine": false,
     "tailwindFunctions": [
         "clsx",
         "cn",
         "cva"
     ],
     "tailwindStylesheet": "resources/css/app.css",
-    "tabWidth": 4,
+    "htmlWhitespaceSensitivity": "ignore",
+    "endOfLine": "lf",
     "overrides": [
         {
             "files": "**/*.yml",
