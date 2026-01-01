@@ -1,7 +1,41 @@
 <script setup lang="ts">
+	import { computed } from 'vue';
 	import { dashboard, logout } from '@/routes';
 	import { edit } from '@/routes/profile';
-	import { Link } from '@inertiajs/vue3';
+	import { InertiaLinkProps, Link, usePage } from '@inertiajs/vue3'
+	import { type Method } from '@inertiajs/core';
+	
+	
+	const page = usePage()
+	const auth = computed(() => page.props.auth)
+
+	import { getInitials } from '@/composables/useInitials'
+	import { urlIsActive } from '@/lib/utils'
+	const isCurrentRoute = computed(
+		() => (url: NonNullable<InertiaLinkProps['href']>) => urlIsActive(url, page.url)
+	)
+
+	interface NavigationItems {
+		title: string;
+		href: string;
+		method?: Method;
+	}
+
+	const navItems: NavigationItems[] = [
+		{
+			title: 'Dashboard',
+			href: dashboard().url,
+		},
+		{
+			title: 'Profile',
+			href: edit().url,
+		},
+		{
+			title: 'Logout',
+			href: logout().url,
+			method: 'post',
+		}
+	];
 </script>
 
 <template>
@@ -11,14 +45,18 @@
 				<div class="flex justify-between h-16 items-center">
 					<div class="text-xl font-semibold">YourApp</div>
 					<div class="flex gap-4 items-center">
-						<Link :href="dashboard().url" class="text-gray-600 hover:text-gray-900 transition duration-300">
-							Dashboard
+						
+						<Link v-for="item, index in navItems" :key="index"
+							:href="item.href"
+							:method="item.method"
+							:class="isCurrentRoute(item.href) ? 'text-gray-900 font-medium' : 'text-gray-600 hover:text-gray-900 transition duration-300'"
+						>
+							{{ item.title }}
 						</Link>
-						<Link :href="edit().url" class="text-gray-600 hover:text-gray-900 transition duration-300">
-							Profile
-						</Link>
-
-						<Link :href="logout().url" method="post" class="text-gray-600 hover:text-gray-900">Logout</Link>
+						
+						<div class="flex size-8 items-center justify-center rounded-full bg-neutral-200 font-semibold text-black">
+							{{ getInitials(auth.user?.name) }}
+						</div>
 					</div>
 				</div>
 			</div>
