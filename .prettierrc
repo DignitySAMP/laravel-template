@@ -11,20 +11,6 @@
     "arrowParens": "always",
     "bracketSpacing": true,
     "bracketSameLine": false,
-    "tailwindFunctions": [
-        "clsx",
-        "cn",
-        "cva"
-    ],
-    "tailwindStylesheet": "resources/css/app.css",
     "htmlWhitespaceSensitivity": "ignore",
-    "endOfLine": "lf",
-    "overrides": [
-        {
-            "files": "**/*.yml",
-            "options": {
-                "tabWidth": 2
-            }
-        }
-    ]
+    "endOfLine": "lf"
 }

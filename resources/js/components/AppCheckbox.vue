@@ -1,31 +1,34 @@
 <template>
-    <div class="flex items-center gap-2">
-        <input
-            type="checkbox"
-            :name="props.name"
-            :id="getElementId"
-            v-model="model"
-            :autocomplete="props.autocomplete"
-            class="size-5 checked:accent-black focus:ring-gray-500 focus:ring-2 transition duration-300"
-        />
-        <label class="text-sm text-gray-700" :for="props.name">{{
-            props.label
-        }}</label>
-    </div>
+	<div class="flex items-center gap-2">
+		<input
+			type="checkbox"
+			:name="props.name"
+			:id="getElementId"
+			v-model="model"
+			:autocomplete="props.autocomplete"
+			class="size-5 checked:accent-black focus:ring-gray-500 focus:ring-2 transition duration-300"
+		/>
+		<label
+			class="text-sm text-gray-700"
+			:for="props.name"
+		>
+			{{ props.label }}
+		</label>
+	</div>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from 'vue'
 
-const model = defineModel();
+const model = defineModel()
 interface Props {
-    label: string;
-    name: string;
-    id?: string;
-    autocomplete?: string;
+	label: string
+	name: string
+	id?: string
+	autocomplete?: string
 }
 
-const props = defineProps<Props>();
+const props = defineProps<Props>()
 
-const getElementId = computed((): string => props.id ?? props.name);
+const getElementId = computed((): string => props.id ?? props.name)
 // TODO: implement tabindex
 </script>
