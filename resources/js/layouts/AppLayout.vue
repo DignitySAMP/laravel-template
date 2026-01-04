@@ -36,6 +36,11 @@
 			method: 'post',
 		}
 	];
+	// TODO: Add cursor pointer 
+	// TODO: Add conditional authentication links
+	// TODO: Make component for AppLogo
+	// TODO: Make InputSelect with optional search bar, use it for profile and logout links
+	// TODO: Make responsive
 </script>
 
 <template>
