@@ -11,11 +11,8 @@ import { Head } from '@inertiajs/vue3'
 	<AppLayout>
 		<div class="bg-white rounded-xl shadow-sm p-8">
 			<h1 class="text-2xl font-semibold text-gray-900">Dashboard</h1>
-		
 
-			<p class="text-gray-700">
-				Welcome to your dashboard!
-			</p>
+			<p class="text-gray-700">Welcome to your dashboard!</p>
 		</div>
 	</AppLayout>
 </template>

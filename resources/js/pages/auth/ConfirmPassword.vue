@@ -40,7 +40,6 @@ import { Form, Head } from '@inertiajs/vue3'
 						text="Confirm Password"
 					/>
 				</div>
-
 			</div>
 		</Form>
 	</AuthLayout>
