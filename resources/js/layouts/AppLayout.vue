@@ -14,6 +14,8 @@ import AppLogo from '@/components/AppLogo.vue';
 
 // TODO: Make InputSelect with optional search bar, use it for profile and logout links
 // TODO: Make responsive
+// TODO: add/fix dark mode
+// TODO: add cookie banner
 </script>
 
 <template>
