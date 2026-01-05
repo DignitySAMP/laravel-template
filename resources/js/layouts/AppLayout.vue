@@ -35,9 +35,14 @@ import AppLogo from '@/components/AppLogo.vue';
 									? 'text-gray-900 font-medium'
 									: 'text-gray-600 hover:text-gray-900 transition duration-300'
 							"
-							class="cursor-pointer"
+							class="cursor-pointer flex gap-2"
 						>
-							{{ item.title }}
+							<component :is="item.icon" class="size-5 " :class="
+								isCurrentRoute(item.href)
+									? 'text-gray-900 font-medium'
+									: 'text-gray-600 hover:text-gray-900 transition duration-300'
+							"/>
+							<span>{{ item.title }}</span>
 						</Link>
 					</div>
 				</div>
