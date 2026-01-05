@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
             'password' => bcrypt('test@example.com'),
             'two_factor_secret' => null,
-            'two_factor_recovery_codes' => null
+            'two_factor_recovery_codes' => null,
         ]);
     }
 }
