@@ -1,42 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { dashboard, logout } from '@/routes'
-import { edit } from '@/routes/profile'
 import { InertiaLinkProps, Link, usePage } from '@inertiajs/vue3'
-import { type Method } from '@inertiajs/core'
 
-const page = usePage()
-const auth = computed(() => page.props.auth)
+import { getNavigationItemsForUser } from '@/composables/getNavigation'
+const navigationItems = getNavigationItemsForUser();
 
-import { getInitials } from '@/composables/useInitials'
 import { urlIsActive } from '@/lib/utils'
 const isCurrentRoute = computed(
-	() => (url: NonNullable<InertiaLinkProps['href']>) => urlIsActive(url, page.url)
+	() => (url: NonNullable<InertiaLinkProps['href']>) => urlIsActive(url, usePage().url)
 )
 
-interface NavigationItems {
-	title: string
-	href: string
-	method?: Method
-}
-
-const navItems: NavigationItems[] = [
-	{
-		title: 'Dashboard',
-		href: dashboard().url,
-	},
-	{
-		title: 'Profile',
-		href: edit().url,
-	},
-	{
-		title: 'Logout',
-		href: logout().url,
-		method: 'post',
-	},
-]
-// TODO: Add cursor pointer
-// TODO: Add conditional authentication links
 // TODO: Make component for AppLogo
 // TODO: Make InputSelect with optional search bar, use it for profile and logout links
 // TODO: Make responsive
@@ -50,7 +23,7 @@ const navItems: NavigationItems[] = [
 					<div class="text-xl font-semibold">YourApp</div>
 					<div class="flex gap-4 items-center">
 						<Link
-							v-for="(item, index) in navItems"
+							v-for="(item, index) in navigationItems"
 							:key="index"
 							:href="item.href"
 							:method="item.method"
@@ -59,15 +32,10 @@ const navItems: NavigationItems[] = [
 									? 'text-gray-900 font-medium'
 									: 'text-gray-600 hover:text-gray-900 transition duration-300'
 							"
+							class="cursor-pointer"
 						>
 							{{ item.title }}
 						</Link>
-
-						<div
-							class="flex size-8 items-center justify-center rounded-full bg-neutral-200 font-semibold text-black"
-						>
-							{{ getInitials(auth.user?.name) }}
-						</div>
 					</div>
 				</div>
 			</div>
