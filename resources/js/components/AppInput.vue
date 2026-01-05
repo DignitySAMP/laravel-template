@@ -41,15 +41,15 @@
 			/>
 
 			<div
-				class="absolute top-2 right-2"
-				:class="props.error ? 'text-red-300' : 'text-slate-300'"
+				class="absolute top-3 right-3"
+				:class="props.error ? 'text-red-300' : 'text-black'"
 			>
-				<IconEmail v-if="props.type === 'email'" />
-				<IconPassword
+				<EnvelopeIcon v-if="props.type === 'email'" class="size-5 opacity-25"/>
+				<component :is="togglePassword ? EyeSlashIcon : EyeIcon"
 					v-if="props.type === 'password'"
 					@click="togglePassword = !togglePassword"
 					:toggle="togglePassword"
-					class="cursor-pointer hover:text-slate-500"
+					class="cursor-pointer size-5 opacity-25 hover:text-neutral-700"
 				/>
 			</div>
 		</div>
@@ -61,11 +61,8 @@
 	</div>
 </template>
 <script setup lang="ts">
-// TODO: Implement icons and password eye
-//import IconEmail from '@/icons/form/IconEmail.vue';
-//import IconPassword from '@/icons/form/IconPassword.vue';
-
 import { computed, ref } from 'vue'
+import { EnvelopeIcon, EyeIcon, EyeSlashIcon } from '@heroicons/vue/24/solid'
 
 const model = defineModel()
 interface Props {
