@@ -10,7 +10,8 @@ const isCurrentRoute = computed(
 	() => (url: NonNullable<InertiaLinkProps['href']>) => urlIsActive(url, usePage().url)
 )
 
-// TODO: Make component for AppLogo
+import AppLogo from '@/components/AppLogo.vue';
+
 // TODO: Make InputSelect with optional search bar, use it for profile and logout links
 // TODO: Make responsive
 </script>
@@ -20,7 +21,7 @@ const isCurrentRoute = computed(
 		<nav class="bg-white border-b">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="flex justify-between h-16 items-center">
-					<div class="text-xl font-semibold">YourApp</div>
+					<AppLogo/>
 					<div class="flex gap-4 items-center">
 						<Link
 							v-for="(item, index) in navigationItems"
