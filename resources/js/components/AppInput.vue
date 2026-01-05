@@ -44,12 +44,12 @@
 				class="absolute top-3 right-3"
 				:class="props.error ? 'text-red-300' : 'text-black'"
 			>
-				<EnvelopeIcon v-if="props.type === 'email'" class="size-5 opacity-25"/>
+				<EnvelopeIcon v-if="props.type === 'email'" class="size-5 opacity-50"/>
 				<component :is="togglePassword ? EyeSlashIcon : EyeIcon"
 					v-if="props.type === 'password'"
 					@click="togglePassword = !togglePassword"
 					:toggle="togglePassword"
-					class="cursor-pointer size-5 opacity-25 hover:text-neutral-700"
+					class="cursor-pointer size-5 opacity-50 hover:text-neutral-700"
 				/>
 			</div>
 		</div>
@@ -62,7 +62,7 @@
 </template>
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { EnvelopeIcon, EyeIcon, EyeSlashIcon } from '@heroicons/vue/24/solid'
+import { EnvelopeIcon, EyeIcon, EyeSlashIcon } from '@heroicons/vue/24/outline'
 
 const model = defineModel()
 interface Props {
