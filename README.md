@@ -43,7 +43,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 | Inertia Serverside | Adds Inertia to work on the serverside |
 | Laravel Fortify | Provides authentication scaffolding, maintained by Laravel team |
 | Laravel Wayfinder | TypeScript replacement for Ziggy.js: manage Laravel routes in in the front-end |
-| Laravel Pint | The prettier of Laravel: auto format .php code according to Laravel conventions (use `composer format:check`)|
+| Laravel Pint | The prettier of Laravel: auto format .php code according to Laravel conventions (use `composer check`)|
 | Larastan | The ESLINT of Laravel: scopes errors or potential code fallbacks by analyzing code |
 | Laravel Debugbar | Shows a debug bar during development when `APP_DEBUG = true` |
 | Laravel IDE Helper | Generates `_ide_helper.php` and `.phpstorm.meta.php` to assist your IDE with auto completion |
