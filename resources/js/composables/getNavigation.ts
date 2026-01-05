@@ -2,11 +2,11 @@ import { Component, computed } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 
 
-import { dashboard, login, logout, register } from '@/routes'
+import { dashboard, home, login, logout, register } from '@/routes'
 import { edit } from '@/routes/profile'
 import { type Method } from '@inertiajs/core'
 
-import { ClipboardDocumentIcon, UserCircleIcon, ArrowRightStartOnRectangleIcon, KeyIcon, PlusCircleIcon } from '@heroicons/vue/24/outline'
+import { ClipboardDocumentIcon, HomeIcon, UserCircleIcon, ArrowRightStartOnRectangleIcon, KeyIcon, PlusCircleIcon } from '@heroicons/vue/24/outline'
 
 const page = usePage()
 const auth = computed(() => page.props.auth.user)
@@ -16,11 +16,17 @@ export interface NavigationItems {
     href: string
     method?: Method,
     icon?: Component
-    auth: boolean
+    auth: boolean | null
 }
 
 export const authNavItems: NavigationItems[] = [
-    // TODO: make 'home' accessible by both auth and guest
+    // all
+    {
+        title: 'Home',
+        href: home().url,
+        auth: null,
+        icon: HomeIcon,
+    },
 
     // auth
     {
@@ -62,14 +68,20 @@ export const getNavigationItemsForUser = () => {
     const userNavItems: NavigationItems[] = [];
 
     authNavItems.forEach(navItem => {
-        if (auth.value) {
-            if (navItem.auth) {
-                userNavItems.push(navItem);
-            }
+        if (navItem.auth === null) {
+            userNavItems.push(navItem);
         }
         else {
-            if (!navItem.auth) {
-                userNavItems.push(navItem);
+
+            if (auth.value) {
+                if (navItem.auth) {
+                    userNavItems.push(navItem);
+                }
+            }
+            else {
+                if (!navItem.auth) {
+                    userNavItems.push(navItem);
+                }
             }
         }
     });
