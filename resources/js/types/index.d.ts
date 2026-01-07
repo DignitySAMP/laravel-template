@@ -34,3 +34,8 @@ export interface User {
 }
 
 export type BreadcrumbItemType = BreadcrumbItem
+
+export interface FormSelectItem {
+	label: string
+	value: string | number
+}
