@@ -1,5 +1,5 @@
 <template>
-    <div ref="selectBoxRef" class="relative">
+    <div ref="selectBoxRef" class="relative text-black">
         <div class="w-full px-4 py-2 flex justify-between items-center border rounded-lg transition duration-300"
             :class="[props.error
                     ? 'border-red-300 focus:ring-red-600'
@@ -15,7 +15,7 @@
             <ChevronDownIcon class="size-5"/>
         </div>
     
-        <div v-if="showSelectItems" class="mt-1 w-full px-4 py-2 flex flex-col border rounded-lg">
+        <div v-if="showSelectItems" class="mt-1 w-full px-4 py-2 flex flex-col border border-gray-300 rounded-lg">
             <input 
                 v-if="search"
                 id="input_search"
@@ -29,7 +29,7 @@
             <p 
                 @click="onSelectItem(item)" 
                 v-for="item, key in filteredItems" :key="key" 
-                class="mt-2 p-2 hover:bg-white rounded-lg transition duration-300"
+                class="mt-2 p-2 hover:bg-white hover:shadow rounded-lg cursor-pointer transition duration-300"
             >
                 {{ item.label }}
             </p>
