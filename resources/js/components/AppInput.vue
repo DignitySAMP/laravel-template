@@ -38,6 +38,7 @@
 						: 'border-gray-300 focus:ring-black'
 				"
 				:autofocus="props.autofocus"
+				:tabindex="props.tabindex"
 			/>
 
 			<div
@@ -76,8 +77,8 @@ interface Props {
 	error?: string
 	required?: boolean
 	autofocus?: boolean
+	tabindex?: number
 }
-// TODO: implement tabindex
 
 const props = withDefaults(defineProps<Props>(), {
 	type: 'text',

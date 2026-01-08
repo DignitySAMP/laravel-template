@@ -1,6 +1,7 @@
 <template>
 	<button
 		:id="getElementId"
+		:tabindex="props.tabindex"
 		:name="props.name"
 		class="w-full bg-black text-white py-2.5 rounded-lg hover:bg-gray-800 transition-colors font-medium"
 	>
@@ -29,6 +30,7 @@ interface Props {
 	type?: string
 	icon?: Component
 	disabled?: boolean
+	tabindex?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -37,5 +39,4 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const getElementId = computed((): string => props.id ?? props.name)
-// TODO: implement tabindex
 </script>

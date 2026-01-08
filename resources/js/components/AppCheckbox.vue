@@ -4,6 +4,7 @@
 			type="checkbox"
 			:name="props.name"
 			:id="getElementId"
+			:tabindex="props.tabindex"
 			v-model="model"
 			:autocomplete="props.autocomplete"
 			class="size-5 checked:accent-black focus:ring-gray-500 focus:ring-2 transition duration-300"
@@ -25,10 +26,10 @@ interface Props {
 	name: string
 	id?: string
 	autocomplete?: string
+	tabindex?: number
 }
 
 const props = defineProps<Props>()
 
 const getElementId = computed((): string => props.id ?? props.name)
-// TODO: implement tabindex
 </script>
