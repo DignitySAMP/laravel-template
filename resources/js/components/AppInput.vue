@@ -45,8 +45,12 @@
 				class="absolute top-3 right-3"
 				:class="props.error ? 'text-red-300' : 'text-black'"
 			>
-				<EnvelopeIcon v-if="props.type === 'email'" class="size-5 opacity-50"/>
-				<component :is="togglePassword ? EyeSlashIcon : EyeIcon"
+				<EnvelopeIcon
+					v-if="props.type === 'email'"
+					class="size-5 opacity-50"
+				/>
+				<component
+					:is="togglePassword ? EyeSlashIcon : EyeIcon"
 					v-if="props.type === 'password'"
 					@click="togglePassword = !togglePassword"
 					:toggle="togglePassword"

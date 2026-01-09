@@ -1,11 +1,11 @@
 <script setup lang="ts">
-	import AppLogo from '@/components/AppLogo.vue';
-	import AppWrapper from '@/layouts/AppWrapper.vue';
+import AppLogo from '@/components/AppLogo.vue'
+import AppWrapper from '@/layouts/AppWrapper.vue'
 
-	defineProps<{
-		title?: string
-		description?: string
-	}>()
+defineProps<{
+	title?: string
+	description?: string
+}>()
 </script>
 
 <template>
@@ -13,7 +13,7 @@
 		<div class="min-h-screen flex items-center justify-center px-4 py-12">
 			<div class="w-full max-w-md">
 				<div class="w-full flex justify-center items-center mb-4">
-					<AppLogo size="large"/>
+					<AppLogo size="large" />
 				</div>
 
 				<div class="text-center mb-8">

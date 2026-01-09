@@ -3,15 +3,15 @@ import { computed } from 'vue'
 import { InertiaLinkProps, Link, usePage } from '@inertiajs/vue3'
 
 import { getNavigationItemsForUser } from '@/composables/getNavigation'
-const navigationItems = getNavigationItemsForUser();
+const navigationItems = getNavigationItemsForUser()
 
 import { urlIsActive } from '@/lib/utils'
 const isCurrentRoute = computed(
 	() => (url: NonNullable<InertiaLinkProps['href']>) => urlIsActive(url, usePage().url)
 )
 
-import AppLogo from '@/components/AppLogo.vue';
-import AppWrapper from '@/layouts/AppWrapper.vue';
+import AppLogo from '@/components/AppLogo.vue'
+import AppWrapper from '@/layouts/AppWrapper.vue'
 
 // TODO: Make responsive
 // TODO: add/fix dark mode
@@ -24,7 +24,7 @@ import AppWrapper from '@/layouts/AppWrapper.vue';
 			<nav class="bg-white border-b">
 				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div class="flex justify-between h-16 items-center">
-						<AppLogo/>
+						<AppLogo />
 						<div class="flex gap-4 items-center">
 							<Link
 								v-for="(item, index) in navigationItems"
@@ -38,11 +38,15 @@ import AppWrapper from '@/layouts/AppWrapper.vue';
 								"
 								class="cursor-pointer flex gap-2"
 							>
-								<component :is="item.icon" class="size-5 " :class="
-									isCurrentRoute(item.href)
-										? 'text-gray-900 font-medium'
-										: 'text-gray-600 hover:text-gray-900 transition duration-300'
-								"/>
+								<component
+									:is="item.icon"
+									class="size-5"
+									:class="
+										isCurrentRoute(item.href)
+											? 'text-gray-900 font-medium'
+											: 'text-gray-600 hover:text-gray-900 transition duration-300'
+									"
+								/>
 								<span>{{ item.title }}</span>
 							</Link>
 						</div>
