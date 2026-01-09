@@ -36,50 +36,76 @@
 		</div>
 	</div>
 
-	<div
-		v-if="showCookiePreferences"
-		class="bg-white rounded-xl shadow-sm"
-	>
-		<div class="flex flex-col gap-2">
-			<div
-				v-for="(cookie, index) in CookieContainer"
-				:key="index"
-				class="grid grid-cols-4 gap-2 bg-gray-50 border border-gray-100 rounded-lg"
-			>
-				<span>
-					{{ cookie.name }}
-				</span>
+	<AppModal :show="showCookiePreferences">
+		<div v-for="(_, cookie_type_index) in getCookieCategories" :key="cookie_type_index">
+			<div v-if="getCookiesForType(cookie_type_index).length > 0" class="mt-4">
+				<div class="flex flex-col">
+					<h2 class="font-bold">
+						{{ getCookieTypeName(cookie_type_index)?.name  }}
+					</h2>
+					<span class="text-sm font-thin tracking-tight">
+						{{ getCookieTypeName(cookie_type_index)?.description  }}
+					</span>
+				</div>
 
-				<span class="text-wrap">
-					{{ cookie.description }}
-				</span>
+				<div class="mt-4 flex flex-col gap-2">
+					<div
+						v-for="(cookie, cookie_index) in getCookiesForType(cookie_type_index)"
+						:key="cookie_index"
+						class="grid grid-cols-[1fr_auto] gap-2 bg-gray-50 border border-gray-100 rounded-lg text-sm px-4 py-2"
+					>
+						<div class="flex flex-col">
+							<span class="font-bold">
+								{{ cookie.name }}
+							</span>
 
-				<span>
-					{{ getCookieTypeName(cookie.type)?.name ?? 'Unknown' }}
-				</span>
+							<span class="text-wrap font-light">
+								{{ cookie.description }}
+							</span>
+						</div>
 
-				<span>{{ cookie.lifetime }} minutes ({{ cookie.lifetime / 60 }} hours)</span>
+						<div class="flex flex-col">
+							<span class="font-bold">
+								{{ getCookieTypeName(cookie.type)?.name ?? 'Unknown' }}
+							</span>
+
+							<span class="text-sm">
+								Expires after {{ cookie.lifetime }} minutes ({{ cookie.lifetime / 60 }} hours)
+							</span>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
+	</AppModal>
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { enumKeys } from '@/lib/utils'
+import { CookieTypes, CookieContainer, getCookieTypeName } from '@/composables/cookieHandler'
+
 import AppButton from '@/components/AppButton.vue';
-import { CookieContainer, getCookieTypeName } from '@/composables/cookieHandler'
+import AppModal from '@/components/AppModal.vue';
+
 const showCookieMessage = ref<boolean>(false);
 const showCookiePreferences = ref<boolean>(false)
-
+const getCookieCategories = ref<string[]>([]);
 
 onMounted(() => {
 	// FIXME: check if they accepted cookies or not
 	//showCookieMessage.value = true;
 })
 
-
+// TODO: Make cookies toggable
 const onAcceptCookies = () => { }
 const onDenyCookies = () => { }
-const onViewCookies = () => { }
+const onViewCookies = () => {
+	
+	showCookiePreferences.value = true;
+	getCookieCategories.value = enumKeys(CookieTypes);
+}
+
+const getCookiesForType = (type: number) => CookieContainer.filter(cookie => cookie.type === type);
 
 // TODO: Make the actual banner, make individual cookies toggable (make a new model for this so we can handle the choice on the backend)
 </script>

@@ -13,3 +13,9 @@ export function urlIsActive(urlToCheck: NonNullable<InertiaLinkProps['href']>, c
 export function toUrl(href: NonNullable<InertiaLinkProps['href']>) {
 	return typeof href === 'string' ? href : href?.url
 }
+
+export function enumKeys<T extends object>(e: T) {
+	const keys = Object.keys(e)
+	const isStringEnum = isNaN(Number(keys[0]))
+	return isStringEnum ? keys : keys.slice(keys.length / 2)
+}
