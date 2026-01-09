@@ -1,4 +1,5 @@
 import { onMounted, ref } from 'vue'
+import { setCookie } from '@/composables/cookieHandler'
 
 type Appearance = 'light' | 'dark' | 'system'
 
@@ -15,16 +16,6 @@ export function updateTheme(value: Appearance) {
 	} else {
 		document.documentElement.classList.toggle('dark', value === 'dark')
 	}
-}
-
-const setCookie = (name: string, value: string, days = 365) => {
-	if (typeof document === 'undefined') {
-		return
-	}
-
-	const maxAge = days * 24 * 60 * 60
-
-	document.cookie = `${name}=${value};path=/;max-age=${maxAge};SameSite=Lax`
 }
 
 const mediaQuery = () => {
@@ -80,7 +71,7 @@ export function useAppearance() {
 		localStorage.setItem('appearance', value)
 
 		// Store in cookie for SSR...
-		setCookie('appearance', value)
+		setCookie('appearance', value, 6)
 
 		updateTheme(value)
 	}
