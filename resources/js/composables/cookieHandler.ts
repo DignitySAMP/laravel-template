@@ -27,6 +27,21 @@ export const CookieContainer: Cookie[] = [
 		type: CookieTypes.COOKIE_TYPE_NECESSARY,
 		lifetime: 120,
 	},
+	{
+		name: 'preference',
+		description:
+			'This remembers the choice you make after closing the cookie banner. If you configure your cookies in preferences, it will also remember the choice here.',
+		type: CookieTypes.COOKIE_TYPE_NECESSARY,
+		lifetime: 120,
+	},
+
+	{
+		name: 'appearance',
+		description:
+			'This remembers the theme (light/dark/system) you select and persists it through sessions, applying it when you come back to the website.',
+		type: CookieTypes.COOKIE_TYPE_FUNCTIONAL,
+		lifetime: 120,
+	},
 ]
 
 export function getCookieTypeName(type: CookieTypes) {
@@ -47,14 +62,14 @@ export function getCookieTypeName(type: CookieTypes) {
 		}
 		case CookieTypes.COOKIE_TYPE_ANALYTICS: {
 			return {
-				name: 'Functional',
+				name: 'Analytics',
 				description:
 					'These cookies are third party and track how you use the website. We use this information to improve performance and make our website better.',
 			}
 		}
 		case CookieTypes.COOKIE_TYPE_MARKETING: {
 			return {
-				name: 'Functional',
+				name: 'Marketing',
 				description:
 					'These cookies are third party and use your browser preferences to show advertisements catered to your needs.',
 			}
