@@ -15,7 +15,6 @@ import AppWrapper from '@/layouts/AppWrapper.vue'
 
 // TODO: Make responsive
 // TODO: add/fix dark mode
-// TODO: add cookie banner
 </script>
 
 <template>
