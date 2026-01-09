@@ -3,7 +3,12 @@
 		:id="getElementId"
 		:tabindex="props.tabindex"
 		:name="props.name"
-		class="w-full bg-black text-white py-2.5 rounded-lg hover:bg-gray-800 transition-colors font-medium"
+		class="w-full  py-2.5 rounded-lg cursor-pointer transition-colors font-medium"
+		:class="{
+			'bg-black text-white hover:bg-gray-800': props.theme === 'primary',
+			'bg-gray-300 text-gray-800 hover:bg-gray-400': props.theme === 'secondary',
+			'bg-red-500 text-white hover:bg-red-600': props.theme === 'danger',
+		}"
 	>
 		<div
 			class="flex w-full items-center gap-4 text-center"
@@ -28,6 +33,7 @@ interface Props {
 	text: string
 	id?: string
 	type?: string
+	theme?: "primary" | "secondary" | "danger"
 	icon?: Component
 	disabled?: boolean
 	tabindex?: number
@@ -35,6 +41,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
 	type: 'button',
+	theme: "primary",
 	disabled: false,
 })
 
