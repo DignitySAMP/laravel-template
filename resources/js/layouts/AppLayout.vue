@@ -15,6 +15,7 @@ import AppWrapper from '@/layouts/AppWrapper.vue'
 
 // TODO: Make responsive
 // TODO: add/fix dark mode
+// https://github.com/laravel/vue-starter-kit/commit/43ecbc4f626005dd3681cf5926b5d64715411cb4
 </script>
 
 <template>
