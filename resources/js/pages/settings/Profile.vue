@@ -21,12 +21,12 @@ defineProps<Props>()
 const user = usePage().props.auth.user
 const form = useForm({
 	name: user?.name,
-	email: user?.email
-});
+	email: user?.email,
+})
 
 const submit = () => {
-	if(form.processing) return;
-	form.submit(update(),{
+	if (form.processing) return
+	form.submit(update(), {
 		preserveScroll: true,
 		onFinish: () => form.reset(),
 	})
@@ -45,7 +45,10 @@ const submit = () => {
 					:small="true"
 				/>
 
-				<form @submit.prevent class="space-y-6">
+				<form
+					@submit.prevent
+					class="space-y-6"
+				>
 					<div class="grid gap-2">
 						<AppInput
 							name="name"

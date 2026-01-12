@@ -6,8 +6,6 @@ import SettingsLayout from '@/layouts/SettingsLayout.vue'
 import { Form, Head } from '@inertiajs/vue3'
 import AppPageTitle from '@/components/AppPageTitle.vue'
 import AppButton from '@/components/AppButton.vue'
-
-
 </script>
 
 <template>
@@ -78,9 +76,6 @@ import AppButton from '@/components/AppButton.vue'
 							text="Save Password"
 							name="update-password-button"
 						/>
-
-
-
 
 						<Transition
 							enter-active-class="transition ease-in-out"

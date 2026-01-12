@@ -185,11 +185,13 @@ onMounted(() => {
 	}
 })
 
+/* WIP:
 // TODO: Make cookies toggable. Use this object as the baseline:
 interface CookiePreferenceInterface {
 	name: string // link to 'name' in CookieContainer in /composables/cookieHandler
 	allow: boolean
 }
+
 const cookiePreferences = ref<CookiePreferenceInterface[]>([])
 const updateCookiePreference = (cookie: string, status: boolean): void => {
 	const index = cookiePreferences.value.findIndex((c) => c.name === cookie)
@@ -197,7 +199,7 @@ const updateCookiePreference = (cookie: string, status: boolean): void => {
 		cookiePreferences.value[index].allow = status // TODO: Make sure the 'mandatory' cookies are always included here
 	} else cookiePreferences.value.push({ name: cookie, allow: status })
 }
-
+*/
 const onAcceptCookies = () => {
 	const preference_cookie = ''
 	setCookie('preference', preference_cookie, 31)

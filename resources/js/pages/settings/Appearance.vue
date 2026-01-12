@@ -8,14 +8,13 @@ import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'
 import AppPageTitle from '@/components/AppPageTitle.vue'
 
-const { appearance, updateAppearance } = useAppearance();
+const { appearance, updateAppearance } = useAppearance()
 
 const tabs = [
 	{ value: 'light', Icon: SunIcon, label: 'Light' },
 	{ value: 'dark', Icon: MoonIcon, label: 'Dark' },
 	{ value: 'system', Icon: ComputerDesktopIcon, label: 'System' },
-] as const;
-
+] as const
 </script>
 
 <template>
