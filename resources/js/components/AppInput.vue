@@ -31,7 +31,7 @@
 				:autocomplete="props.autocomplete"
 				:required="props.required"
 				v-model="model"
-				class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:border-transparent outline-none"
+				class="w-full px-2 py-1 border rounded-lg focus:ring-2 focus:border-transparent outline-none text-sm"
 				:class="
 					props.error
 						? 'border-red-300 focus:ring-red-600'
@@ -42,7 +42,7 @@
 			/>
 
 			<div
-				class="absolute top-3 right-3"
+				class="absolute top-1.5 right-1.5"
 				:class="props.error ? 'text-red-300' : 'text-black'"
 			>
 				<EnvelopeIcon
