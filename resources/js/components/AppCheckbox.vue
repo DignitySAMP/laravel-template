@@ -30,6 +30,5 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-
 const getElementId = computed((): string => props.id ?? props.name)
 </script>

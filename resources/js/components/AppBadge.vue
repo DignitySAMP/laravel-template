@@ -11,11 +11,12 @@
 	</span>
 </template>
 <script setup lang="ts">
-interface Props {
-	theme?: 'primary' | 'secondary' | 'danger'
-}
-
-const props = withDefaults(defineProps<Props>(), {
-	theme: 'primary',
-})
+const props = withDefaults(
+	defineProps<{
+		theme?: 'primary' | 'secondary' | 'danger'
+	}>(),
+	{
+		theme: 'primary',
+	}
+)
 </script>

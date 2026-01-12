@@ -19,11 +19,12 @@
 <script setup lang="ts">
 import { BellIcon } from '@heroicons/vue/24/outline'
 
-interface Props {
-	theme: 'primary' | 'secondary' | 'danger'
-}
-
-const props = withDefaults(defineProps<Props>(), {
-	theme: 'primary',
-})
+const props = withDefaults(
+	defineProps<{
+		theme: 'primary' | 'secondary' | 'danger'
+	}>(),
+	{
+		theme: 'primary',
+	}
+)
 </script>

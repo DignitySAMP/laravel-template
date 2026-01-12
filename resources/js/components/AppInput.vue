@@ -96,6 +96,5 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const togglePassword = ref<boolean>(false)
-
 const getElementId = computed((): string => props.id ?? props.name)
 </script>
