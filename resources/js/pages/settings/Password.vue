@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import PasswordController from '@/actions/App/Http/Controllers/Settings/PasswordController'
-import InputError from '@/components/InputError.vue'
+import AppInput from '@/components/AppInput.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'
 import { edit } from '@/routes/user-password'
 import { Form, Head } from '@inertiajs/vue3'
 
 import AppPageTitle from '@/components/AppPageTitle.vue'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import AppButton from '@/components/AppButton.vue'
 import { type BreadcrumbItem } from '@/types'
 
 const breadcrumbItems: BreadcrumbItem[] = [
@@ -43,51 +41,54 @@ const breadcrumbItems: BreadcrumbItem[] = [
 					v-slot="{ errors, processing, recentlySuccessful }"
 				>
 					<div class="grid gap-2">
-						<Label for="current_password">Current password</Label>
-						<Input
-							id="current_password"
+						<AppInput
+							label="Current Password"
 							name="current_password"
 							type="password"
-							class="mt-1 block w-full"
-							autocomplete="current-password"
 							placeholder="Current password"
+							:autofocus="true"
+							autocomplete="current-password"
+							:error="errors.current_password"
+							:required="true"
 						/>
-						<InputError :message="errors.current_password" />
 					</div>
 
 					<div class="grid gap-2">
-						<Label for="password">New password</Label>
-						<Input
-							id="password"
+						<AppInput
+							label="New Password"
 							name="password"
 							type="password"
-							class="mt-1 block w-full"
-							autocomplete="new-password"
 							placeholder="New password"
+							:autofocus="true"
+							autocomplete="new-password"
+							:error="errors.password"
+							:required="true"
 						/>
-						<InputError :message="errors.password" />
 					</div>
 
 					<div class="grid gap-2">
-						<Label for="password_confirmation">Confirm password</Label>
-						<Input
-							id="password_confirmation"
+						<AppInput
+							label="Confirm New Password"
 							name="password_confirmation"
 							type="password"
-							class="mt-1 block w-full"
-							autocomplete="new-password"
 							placeholder="Confirm password"
+							:autofocus="true"
+							autocomplete="new-password"
+							:error="errors.password_confirmation"
+							:required="true"
 						/>
-						<InputError :message="errors.password_confirmation" />
 					</div>
 
 					<div class="flex items-center gap-4">
-						<Button
+						<AppButton
 							:disabled="processing"
 							data-test="update-password-button"
-						>
-							Save password
-						</Button>
+							text="Save Password"
+							name="update-password-button"
+						/>
+
+
+
 
 						<Transition
 							enter-active-class="transition ease-in-out"
