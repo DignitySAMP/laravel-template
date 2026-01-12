@@ -31,6 +31,7 @@ const form = useForm({
 })
 
 const submit = () => {
+	if(form.processing) return;
 	form.submit(store(), {
 		preserveScroll: true,
 		onFinish: () => form.reset('code'),

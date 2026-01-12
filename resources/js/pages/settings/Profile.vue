@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import ProfileController from '@/actions/App/Http/Controllers/Settings/ProfileController'
 import { send } from '@/routes/verification'
-import { Form, Head, Link, usePage } from '@inertiajs/vue3'
+import { update } from '@/actions/App/Http/Controllers/Settings/ProfileController'
+import { Head, useForm, usePage } from '@inertiajs/vue3'
 
+import AppButton from '@/components/AppButton.vue'
+import AppLink from '@/components/AppLink.vue'
+import AppInput from '@/components/AppInput.vue'
 import DeleteUser from '@/components/DeleteUser.vue'
 import AppPageTitle from '@/components/AppPageTitle.vue'
-import InputError from '@/components/InputError.vue'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'
 
@@ -19,8 +18,19 @@ interface Props {
 
 defineProps<Props>()
 
-const page = usePage()
-const user = page.props.auth.user
+const user = usePage().props.auth.user
+const form = useForm({
+	name: user?.name,
+	email: user?.email
+});
+
+const submit = () => {
+	if(form.processing) return;
+	form.submit(update(),{
+		preserveScroll: true,
+		onFinish: () => form.reset(),
+	})
+}
 </script>
 
 <template>
@@ -35,56 +45,45 @@ const user = page.props.auth.user
 					:small="true"
 				/>
 
-				<Form
-					v-bind="ProfileController.update.form()"
-					class="space-y-6"
-					v-slot="{ errors, processing, recentlySuccessful }"
-				>
+				<form @submit.prevent class="space-y-6">
 					<div class="grid gap-2">
-						<Label for="name">Name</Label>
-						<Input
-							id="name"
-							class="mt-1 block w-full"
+						<AppInput
 							name="name"
-							:default-value="user.name"
-							required
-							autocomplete="name"
+							label="Name"
+							type="text"
 							placeholder="Full name"
-						/>
-						<InputError
-							class="mt-2"
-							:message="errors.name"
+							:autofocus="true"
+							autocomplete="name"
+							:error="form.errors.name"
+							v-model="form.name"
+							:required="true"
 						/>
 					</div>
 
 					<div class="grid gap-2">
-						<Label for="email">Email address</Label>
-						<Input
-							id="email"
-							type="email"
-							class="mt-1 block w-full"
+						<AppInput
 							name="email"
-							:default-value="user.email"
-							required
-							autocomplete="username"
-							placeholder="Email address"
-						/>
-						<InputError
-							class="mt-2"
-							:message="errors.email"
+							label="Email address"
+							type="email"
+							placeholder="email@example.com"
+							:autofocus="true"
+							autocomplete="email"
+							v-model="form.email"
+							:error="form.errors.email"
+							:required="true"
 						/>
 					</div>
 
 					<div v-if="mustVerifyEmail && !user.email_verified_at">
 						<p class="-mt-4 text-sm text-muted-foreground">
 							Your email address is unverified.
-							<Link
+							<AppLink
 								:href="send()"
 								as="button"
 								class="text-foreground underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 ease-out hover:decoration-current! dark:decoration-neutral-500"
 							>
 								Click here to resend the verification email.
-							</Link>
+							</AppLink>
 						</p>
 
 						<div
@@ -96,12 +95,14 @@ const user = page.props.auth.user
 					</div>
 
 					<div class="flex items-center gap-4">
-						<Button
-							:disabled="processing"
+						<AppButton
+							@click="submit"
+							name="profile-button"
+							type="submit"
+							text="Save"
+							:disabled="form.processing"
 							data-test="update-profile-button"
-						>
-							Save
-						</Button>
+						/>
 
 						<Transition
 							enter-active-class="transition ease-in-out"
@@ -110,14 +111,14 @@ const user = page.props.auth.user
 							leave-to-class="opacity-0"
 						>
 							<p
-								v-show="recentlySuccessful"
+								v-show="form.recentlySuccessful"
 								class="text-sm text-neutral-600"
 							>
 								Saved.
 							</p>
 						</Transition>
 					</div>
-				</Form>
+				</form>
 			</div>
 
 			<DeleteUser />
