@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AlertError from '@/components/AlertError.vue'
+import AppAlert from '@/components/AppAlert.vue'
 import InputError from '@/components/InputError.vue'
 import { Button } from '@/components/ui/button'
 import {
@@ -139,10 +139,12 @@ watch(
 
 			<div class="relative flex w-auto flex-col items-center justify-center space-y-5">
 				<template v-if="!showVerificationStep">
-					<AlertError
+					<AppAlert
 						v-if="errors?.length"
-						:errors="errors"
-					/>
+						theme="danger"
+					>
+						{{ errors }}
+					</AppAlert>
 					<template v-else>
 						<div class="relative mx-auto flex max-w-md items-center overflow-hidden">
 							<div

@@ -88,7 +88,9 @@ onMounted(async () => {
 					v-if="errors?.length"
 					class="mt-6"
 				>
-					<AppAlert theme="danger" :errors="errors" />
+					<AppAlert theme="danger">
+						{{ errors }}
+					</AppAlert>
 				</div>
 				<div
 					v-else
