@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import AlertError from '@/components/AlertError.vue'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
+import { Form } from '@inertiajs/vue3'
+
 import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth'
 import { regenerateRecoveryCodes } from '@/routes/two-factor'
-import { Form } from '@inertiajs/vue3'
-import { Eye, EyeOff, LockKeyhole, RefreshCw } from 'lucide-vue-next'
-import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
+import { EyeIcon, EyeSlashIcon, LockClosedIcon, ArrowPathIcon  } from '@heroicons/vue/24/outline'
+
+import AppButton from '@/components/AppButton.vue'
+import AppAlert from '@/components/AppAlert.vue'
 
 const { recoveryCodesList, fetchRecoveryCodes, errors } = useTwoFactorAuth()
 const isRecoveryCodesVisible = ref<boolean>(false)
@@ -33,32 +34,30 @@ onMounted(async () => {
 </script>
 
 <template>
-	<Card class="w-full">
-		<CardHeader>
-			<CardTitle class="flex gap-3">
-				<LockKeyhole class="size-4" />
+	<div class="w-full p-6 shadow-md rounded-lg border border-gray-200">
+		<div class="grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 pt-4 px-4">
+			<span class="flex gap-3 leading-none font-semibold">
+				<LockClosedIcon class="size-4" />
 				2FA Recovery Codes
-			</CardTitle>
-			<CardDescription>
+			</span>
+			<span class="text-sm text-gray-600">
 				Recovery codes let you regain access if you lose your 2FA device. Store them in a
 				secure password manager.
-			</CardDescription>
-		</CardHeader>
-		<CardContent>
+			</span>
+		</div>
+		<div class="p-4">
 			<div
 				class="flex flex-col gap-3 select-none sm:flex-row sm:items-center sm:justify-between"
 			>
-				<Button
+				<AppButton
+					type="submit"
+					name="btn_toggle_code_visibility"
 					@click="toggleRecoveryCodesVisibility"
-					class="w-fit"
-				>
-					<component
-						:is="isRecoveryCodesVisible ? EyeOff : Eye"
-						class="size-4"
-					/>
-					{{ isRecoveryCodesVisible ? 'Hide' : 'View' }} Recovery Codes
-				</Button>
-
+					:text="isRecoveryCodesVisible ? 'Hide' : 'View' + ' Recovery Codes'"
+					:icon="isRecoveryCodesVisible ? EyeSlashIcon : EyeIcon"
+					class="max-w-52"
+				/>
+				
 				<Form
 					v-if="isRecoveryCodesVisible && recoveryCodesList.length"
 					v-bind="regenerateRecoveryCodes.form()"
@@ -67,14 +66,16 @@ onMounted(async () => {
 					@success="fetchRecoveryCodes"
 					#default="{ processing }"
 				>
-					<Button
-						variant="secondary"
+					<AppButton
 						type="submit"
+						theme="secondary"
+						name="btn_toggle_code_visibility"
+						@click="toggleRecoveryCodesVisibility"
+						text="Regenerate Codes"
+						:icon="ArrowPathIcon"
+						class="max-w-52"
 						:disabled="processing"
-					>
-						<RefreshCw />
-						Regenerate Codes
-					</Button>
+					/>
 				</Form>
 			</div>
 			<div
@@ -82,12 +83,12 @@ onMounted(async () => {
 					'relative overflow-hidden transition-all duration-300',
 					isRecoveryCodesVisible ? 'h-auto opacity-100' : 'h-0 opacity-0',
 				]"
-			>
+			>	
 				<div
 					v-if="errors?.length"
 					class="mt-6"
 				>
-					<AlertError :errors="errors" />
+					<AppAlert theme="danger" :errors="errors" />
 				</div>
 				<div
 					v-else
@@ -123,6 +124,6 @@ onMounted(async () => {
 					</p>
 				</div>
 			</div>
-		</CardContent>
-	</Card>
+		</div>
+	</div>
 </template>

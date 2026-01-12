@@ -11,8 +11,8 @@ import SettingsLayout from '@/layouts/SettingsLayout.vue'
 
 import AppPageTitle from '@/components/AppPageTitle.vue'
 import AppBadge from '@/components/AppBadge.vue'
-import TwoFactorRecoveryCodes from '@/components/TwoFactorRecoveryCodes.vue'
-import TwoFactorSetupModal from '@/components/TwoFactorSetupModal.vue'
+import TwoFactorRecoveryCodes from '@/pages/settings/2fa/TwoFactorRecoveryCodes.vue'
+import TwoFactorSetupModal from '@/pages/settings/2fa/TwoFactorSetupModal.vue'
 
 import AppButton from '@/components/AppButton.vue'
 
