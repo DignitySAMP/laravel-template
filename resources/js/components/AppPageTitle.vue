@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col py-2 my-4">
+    <div class="flex flex-col mb-4">
         <h1 v-if="props.title" class="font-bold" :class="props.small ? '' : 'text-lg'" v-html="props.title"/>
         <span v-if="props.description" class="font-light" :class="props.small ? 'text-sm' : ''" v-html="props.description"/>
     </div>
