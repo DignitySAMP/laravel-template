@@ -19,7 +19,10 @@
 				</slot>
 			</label>
 		</div>
-		<div class="relative" :class="props.label ? 'mt-1' : ''">
+		<div
+			class="relative"
+			:class="props.label ? 'mt-1' : ''"
+		>
 			<input
 				:id="getElementId"
 				:name="props.name"

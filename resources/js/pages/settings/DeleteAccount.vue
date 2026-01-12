@@ -1,5 +1,5 @@
 <template>
-    <div class="space-y-6">
+	<div class="space-y-6">
 		<AppPageTitle
 			title="Delete account"
 			description="Delete your account and all of its resources"
@@ -13,88 +13,86 @@
 				<p class="text-sm">Please proceed with caution, this cannot be undone.</p>
 			</div>
 
-            <AppButton 
-                @click="showDeleteModal = true" 
-                name="btn_show_delete" 
-                text="Delete Account" 
-                data-test="delete-user-button"
-                theme="danger"
-            />
+			<AppButton
+				@click="showDeleteModal = true"
+				name="btn_show_delete"
+				text="Delete Account"
+				data-test="delete-user-button"
+				theme="danger"
+			/>
 
-            <AppModal 
-                :show="showDeleteModal" 
-                @close="showDeleteModal = false"
-                width="w-full max-w-[calc(100%-2rem)] sm:max-w-lg space-y-4"
-            >
-                <h2 class="text-lg font-bold">
-                    Are you sure you want to delete your account?
-                </h2>
-                <p class="text-gray-600 text-sm">
-                    Once your account is deleted, all of its resources and data will
-                    also be permanently deleted. Please enter your password to confirm
-                    you would like to permanently delete your account.
-                </p>
+			<AppModal
+				:show="showDeleteModal"
+				@close="showDeleteModal = false"
+				width="w-full max-w-[calc(100%-2rem)] sm:max-w-lg space-y-4"
+			>
+				<h2 class="text-lg font-bold">Are you sure you want to delete your account?</h2>
+				<p class="text-gray-600 text-sm">
+					Once your account is deleted, all of its resources and data will also be
+					permanently deleted. Please enter your password to confirm you would like to
+					permanently delete your account.
+				</p>
 
-                <div>
-                    <AppInput
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                        :autofocus="true"
-                        autocomplete="new-password"
-                        :error="form.errors.password"
-                        v-model="form.password"
-                        :required="true"
-                    />
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <AppButton
-                        name="btn_cancel_delete_account"
-                        text="Cancel"
-                        type="submit"
-                        @click="showDeleteModal = false; form.reset();"
-                        theme="secondary"
-                    />
+				<div>
+					<AppInput
+						name="password"
+						type="password"
+						placeholder="Password"
+						:autofocus="true"
+						autocomplete="new-password"
+						:error="form.errors.password"
+						v-model="form.password"
+						:required="true"
+					/>
+				</div>
+				<div class="grid grid-cols-2 gap-4">
+					<AppButton
+						name="btn_cancel_delete_account"
+						text="Cancel"
+						type="submit"
+						@click="
+							showDeleteModal = false
+							form.reset()
+						"
+						theme="secondary"
+					/>
 
-                    <AppButton
-                        data-test="confirm-delete-user-button"
-                        name="btn_delete_account"
-                        text="Delete Account"
-                        type="submit"
-                        @click="submit"
-                        theme="danger"
-                    />
-            </div>
-
-            </AppModal>
-        </div>
-    </div>
+					<AppButton
+						data-test="confirm-delete-user-button"
+						name="btn_delete_account"
+						text="Delete Account"
+						type="submit"
+						@click="submit"
+						theme="danger"
+					/>
+				</div>
+			</AppModal>
+		</div>
+	</div>
 </template>
 <script setup lang="ts">
-
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 import AppPageTitle from '@/components/AppPageTitle.vue'
 import AppModal from '@/components/AppModal.vue'
 import AppInput from '@/components/AppInput.vue'
 import AppButton from '@/components/AppButton.vue'
-import { useForm } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3'
 
-import { destroy } from '@/actions/App/Http/Controllers/Settings/ProfileController';
+import { destroy } from '@/actions/App/Http/Controllers/Settings/ProfileController'
 
-const showDeleteModal = ref<boolean>(true);
-
+const showDeleteModal = ref<boolean>(true)
 
 const form = useForm({
-    password: ''
+	password: '',
 })
 
 const submit = () => {
-    if (form.processing) return
+	if (form.processing) return
 	form.submit(destroy(), {
 		preserveScroll: true,
 		onFinish: () => form.reset('password'),
-        onSuccess: () => showDeleteModal.value = false
+		onSuccess: () => (showDeleteModal.value = false),
 	})
 }
 </script>
