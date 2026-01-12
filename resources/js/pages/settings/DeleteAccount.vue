@@ -50,10 +50,7 @@
 						name="btn_cancel_delete_account"
 						text="Cancel"
 						type="submit"
-						@click="
-							showDeleteModal = false
-							form.reset()
-						"
+						@click="cancelDelete()"
 						theme="secondary"
 					/>
 
@@ -93,5 +90,10 @@ const submit = () => {
 		onFinish: () => form.reset('password'),
 		onSuccess: () => (showDeleteModal.value = false),
 	})
+}
+
+const cancelDelete = () => {
+	showDeleteModal.value = false;
+	form.reset();
 }
 </script>
