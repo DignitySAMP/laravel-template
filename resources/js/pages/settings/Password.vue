@@ -3,23 +3,15 @@ import PasswordController from '@/actions/App/Http/Controllers/Settings/Password
 import AppInput from '@/components/AppInput.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'
-import { edit } from '@/routes/user-password'
 import { Form, Head } from '@inertiajs/vue3'
-
 import AppPageTitle from '@/components/AppPageTitle.vue'
 import AppButton from '@/components/AppButton.vue'
-import { type BreadcrumbItem } from '@/types'
 
-const breadcrumbItems: BreadcrumbItem[] = [
-	{
-		title: 'Password settings',
-		href: edit().url,
-	},
-]
+
 </script>
 
 <template>
-	<AppLayout :breadcrumbs="breadcrumbItems">
+	<AppLayout>
 		<Head title="Password settings" />
 
 		<SettingsLayout>

@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3'
 
-import { type BreadcrumbItem } from '@/types'
-import { edit } from '@/routes/appearance'
 import { useAppearance } from '@/composables/useAppearance'
-
 import { ComputerDesktopIcon, MoonIcon, SunIcon } from '@heroicons/vue/24/solid'
 
 import AppLayout from '@/layouts/AppLayout.vue'
@@ -19,16 +16,10 @@ const tabs = [
 	{ value: 'system', Icon: ComputerDesktopIcon, label: 'System' },
 ] as const;
 
-const breadcrumbItems: BreadcrumbItem[] = [
-	{
-		title: 'Appearance settings',
-		href: edit().url,
-	},
-]
 </script>
 
 <template>
-	<AppLayout :breadcrumbs="breadcrumbItems">
+	<AppLayout>
 		<Head title="Appearance settings" />
 
 		<SettingsLayout>

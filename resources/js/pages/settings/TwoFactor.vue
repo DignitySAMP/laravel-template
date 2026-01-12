@@ -7,8 +7,7 @@ import { Button } from '@/components/ui/button'
 import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth'
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'
-import { disable, enable, show } from '@/routes/two-factor'
-import { BreadcrumbItem } from '@/types'
+import { disable, enable } from '@/routes/two-factor'
 import { Form, Head } from '@inertiajs/vue3'
 import { ShieldBan, ShieldCheck } from 'lucide-vue-next'
 import { onUnmounted, ref } from 'vue'
@@ -22,14 +21,6 @@ withDefaults(defineProps<Props>(), {
 	requiresConfirmation: false,
 	twoFactorEnabled: false,
 })
-
-const breadcrumbs: BreadcrumbItem[] = [
-	{
-		title: 'Two-Factor Authentication',
-		href: show.url(),
-	},
-]
-
 const { hasSetupData, clearTwoFactorAuthData } = useTwoFactorAuth()
 const showSetupModal = ref<boolean>(false)
 
@@ -39,7 +30,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-	<AppLayout :breadcrumbs="breadcrumbs">
+	<AppLayout>
 		<Head title="Two-Factor Authentication" />
 		<SettingsLayout>
 			<div class="space-y-6">
