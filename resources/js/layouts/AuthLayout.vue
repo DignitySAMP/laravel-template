@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import AppLogo from '@/components/AppLogo.vue'
-import AppWrapper from '@/layouts/AppWrapper.vue'
-
-defineProps<{
-	title?: string
-	description?: string
-}>()
-</script>
-
 <template>
 	<AppWrapper>
 		<div class="min-h-screen flex items-center justify-center px-4 py-12">
@@ -28,3 +18,12 @@ defineProps<{
 		</div>
 	</AppWrapper>
 </template>
+<script setup lang="ts">
+import AppLogo from '@/components/AppLogo.vue'
+import AppWrapper from '@/layouts/AppWrapper.vue'
+
+defineProps<{
+	title?: string
+	description?: string
+}>()
+</script>

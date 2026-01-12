@@ -1,22 +1,3 @@
-<script setup lang="ts">
-import AppButton from '@/components/AppButton.vue'
-import AppCheckbox from '@/components/AppCheckbox.vue'
-import AppInput from '@/components/AppInput.vue'
-import AppLink from '@/components/AppLink.vue'
-
-import AuthBase from '@/layouts/AuthLayout.vue'
-import { register } from '@/routes'
-import { store } from '@/routes/login'
-import { request } from '@/routes/password'
-import { Form, Head } from '@inertiajs/vue3'
-
-const props = defineProps<{
-	status?: string
-	canResetPassword: boolean
-	canRegister: boolean
-}>()
-</script>
-
 <template>
 	<AuthBase
 		title="Log in to your account"
@@ -105,3 +86,21 @@ const props = defineProps<{
 		</Form>
 	</AuthBase>
 </template>
+<script setup lang="ts">
+import AppButton from '@/components/AppButton.vue'
+import AppCheckbox from '@/components/AppCheckbox.vue'
+import AppInput from '@/components/AppInput.vue'
+import AppLink from '@/components/AppLink.vue'
+
+import AuthBase from '@/layouts/AuthLayout.vue'
+import { register } from '@/routes'
+import { store } from '@/routes/login'
+import { request } from '@/routes/password'
+import { Form, Head } from '@inertiajs/vue3'
+
+const props = defineProps<{
+	status?: string
+	canResetPassword: boolean
+	canRegister: boolean
+}>()
+</script>

@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import AppButton from '@/components/AppButton.vue'
-import AppInput from '@/components/AppInput.vue'
-import AppLink from '@/components/AppLink.vue'
-import AuthBase from '@/layouts/AuthLayout.vue'
-import { login } from '@/routes'
-import { store } from '@/routes/register'
-import { Form, Head } from '@inertiajs/vue3'
-</script>
-
 <template>
 	<AuthBase
 		title="Create an account"
@@ -95,3 +85,12 @@ import { Form, Head } from '@inertiajs/vue3'
 		</Form>
 	</AuthBase>
 </template>
+<script setup lang="ts">
+import AppButton from '@/components/AppButton.vue'
+import AppInput from '@/components/AppInput.vue'
+import AppLink from '@/components/AppLink.vue'
+import AuthBase from '@/layouts/AuthLayout.vue'
+import { login } from '@/routes'
+import { store } from '@/routes/register'
+import { Form, Head } from '@inertiajs/vue3'
+</script>

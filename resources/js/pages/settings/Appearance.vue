@@ -1,22 +1,3 @@
-<script setup lang="ts">
-import { Head } from '@inertiajs/vue3'
-
-import { useAppearance } from '@/composables/useAppearance'
-import { ComputerDesktopIcon, MoonIcon, SunIcon } from '@heroicons/vue/24/outline'
-
-import AppLayout from '@/layouts/AppLayout.vue'
-import SettingsLayout from '@/layouts/SettingsLayout.vue'
-import AppPageTitle from '@/components/AppPageTitle.vue'
-
-const { appearance, updateAppearance } = useAppearance()
-
-const tabs = [
-	{ value: 'light', Icon: SunIcon, label: 'Light' },
-	{ value: 'dark', Icon: MoonIcon, label: 'Dark' },
-	{ value: 'system', Icon: ComputerDesktopIcon, label: 'System' },
-] as const
-</script>
-
 <template>
 	<AppLayout>
 		<Head title="Appearance settings" />
@@ -51,3 +32,21 @@ const tabs = [
 		</SettingsLayout>
 	</AppLayout>
 </template>
+<script setup lang="ts">
+import { Head } from '@inertiajs/vue3'
+
+import { useAppearance } from '@/composables/useAppearance'
+import { ComputerDesktopIcon, MoonIcon, SunIcon } from '@heroicons/vue/24/outline'
+
+import AppLayout from '@/layouts/AppLayout.vue'
+import SettingsLayout from '@/layouts/SettingsLayout.vue'
+import AppPageTitle from '@/components/AppPageTitle.vue'
+
+const { appearance, updateAppearance } = useAppearance()
+
+const tabs = [
+	{ value: 'light', Icon: SunIcon, label: 'Light' },
+	{ value: 'dark', Icon: MoonIcon, label: 'Dark' },
+	{ value: 'system', Icon: ComputerDesktopIcon, label: 'System' },
+] as const
+</script>

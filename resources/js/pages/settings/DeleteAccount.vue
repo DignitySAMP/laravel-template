@@ -51,7 +51,7 @@
 						text="Cancel"
 						type="submit"
 						@click="
-							showDeleteModal = false;
+							showDeleteModal = false
 							form.reset()
 						"
 						theme="secondary"
@@ -72,14 +72,13 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useForm } from '@inertiajs/vue3'
+import { destroy } from '@/actions/App/Http/Controllers/Settings/ProfileController'
 
 import AppPageTitle from '@/components/AppPageTitle.vue'
 import AppModal from '@/components/AppModal.vue'
 import AppInput from '@/components/AppInput.vue'
 import AppButton from '@/components/AppButton.vue'
-import { useForm } from '@inertiajs/vue3'
-
-import { destroy } from '@/actions/App/Http/Controllers/Settings/ProfileController'
 
 const showDeleteModal = ref<boolean>(false)
 

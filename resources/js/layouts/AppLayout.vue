@@ -1,23 +1,3 @@
-<script setup lang="ts">
-import { computed } from 'vue'
-import { InertiaLinkProps, Link, usePage } from '@inertiajs/vue3'
-
-import { getNavigationItemsForUser } from '@/composables/getNavigation'
-const navigationItems = getNavigationItemsForUser()
-
-import { urlIsActive } from '@/lib/utils'
-const isCurrentRoute = computed(
-	() => (url: NonNullable<InertiaLinkProps['href']>) => urlIsActive(url, usePage().url)
-)
-
-import AppLogo from '@/components/AppLogo.vue'
-import AppWrapper from '@/layouts/AppWrapper.vue'
-
-// TODO: Make responsive
-// TODO: add/fix dark mode
-// https://github.com/laravel/vue-starter-kit/commit/43ecbc4f626005dd3681cf5926b5d64715411cb4
-</script>
-
 <template>
 	<AppWrapper>
 		<div class="min-h-screen flex flex-col">
@@ -60,3 +40,22 @@ import AppWrapper from '@/layouts/AppWrapper.vue'
 		</div>
 	</AppWrapper>
 </template>
+<script setup lang="ts">
+import { computed } from 'vue'
+import { InertiaLinkProps, Link, usePage } from '@inertiajs/vue3'
+
+import { getNavigationItemsForUser } from '@/composables/getNavigation'
+const navigationItems = getNavigationItemsForUser()
+
+import { urlIsActive } from '@/lib/utils'
+const isCurrentRoute = computed(
+	() => (url: NonNullable<InertiaLinkProps['href']>) => urlIsActive(url, usePage().url)
+)
+
+import AppLogo from '@/components/AppLogo.vue'
+import AppWrapper from '@/layouts/AppWrapper.vue'
+
+// TODO: Make responsive
+// TODO: add/fix dark mode
+// https://github.com/laravel/vue-starter-kit/commit/43ecbc4f626005dd3681cf5926b5d64715411cb4
+</script>

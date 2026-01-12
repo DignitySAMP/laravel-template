@@ -1,16 +1,3 @@
-<script setup lang="ts">
-import AppButton from '@/components/AppButton.vue'
-import AppLink from '@/components/AppLink.vue'
-import AuthLayout from '@/layouts/AuthLayout.vue'
-import { logout } from '@/routes'
-import { send } from '@/routes/verification'
-import { Form, Head } from '@inertiajs/vue3'
-
-defineProps<{
-	status?: string
-}>()
-</script>
-
 <template>
 	<AuthLayout
 		title="Verify email"
@@ -49,3 +36,15 @@ defineProps<{
 		</Form>
 	</AuthLayout>
 </template>
+<script setup lang="ts">
+import AppButton from '@/components/AppButton.vue'
+import AppLink from '@/components/AppLink.vue'
+import AuthLayout from '@/layouts/AuthLayout.vue'
+import { logout } from '@/routes'
+import { send } from '@/routes/verification'
+import { Form, Head } from '@inertiajs/vue3'
+
+defineProps<{
+	status?: string
+}>()
+</script>

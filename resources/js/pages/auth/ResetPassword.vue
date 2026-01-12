@@ -1,19 +1,3 @@
-<script setup lang="ts">
-import AppButton from '@/components/AppButton.vue'
-import AppInput from '@/components/AppInput.vue'
-import AuthLayout from '@/layouts/AuthLayout.vue'
-import { update } from '@/routes/password'
-import { Form, Head } from '@inertiajs/vue3'
-import { ref } from 'vue'
-
-const props = defineProps<{
-	token: string
-	email: string
-}>()
-
-const inputEmail = ref(props.email)
-</script>
-
 <template>
 	<AuthLayout
 		title="Reset password"
@@ -78,3 +62,18 @@ const inputEmail = ref(props.email)
 		</Form>
 	</AuthLayout>
 </template>
+<script setup lang="ts">
+import AppButton from '@/components/AppButton.vue'
+import AppInput from '@/components/AppInput.vue'
+import AuthLayout from '@/layouts/AuthLayout.vue'
+import { update } from '@/routes/password'
+import { Form, Head } from '@inertiajs/vue3'
+import { ref } from 'vue'
+
+const props = defineProps<{
+	token: string
+	email: string
+}>()
+
+const inputEmail = ref(props.email)
+</script>

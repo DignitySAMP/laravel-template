@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import PasswordController from '@/actions/App/Http/Controllers/Settings/PasswordController'
-import AppInput from '@/components/AppInput.vue'
-import AppLayout from '@/layouts/AppLayout.vue'
-import SettingsLayout from '@/layouts/SettingsLayout.vue'
-import { Form, Head } from '@inertiajs/vue3'
-import AppPageTitle from '@/components/AppPageTitle.vue'
-import AppButton from '@/components/AppButton.vue'
-</script>
-
 <template>
 	<AppLayout>
 		<Head title="Password settings" />
@@ -96,3 +86,14 @@ import AppButton from '@/components/AppButton.vue'
 		</SettingsLayout>
 	</AppLayout>
 </template>
+<script setup lang="ts">
+import { Form, Head } from '@inertiajs/vue3'
+import PasswordController from '@/actions/App/Http/Controllers/Settings/PasswordController'
+
+import AppLayout from '@/layouts/AppLayout.vue'
+import SettingsLayout from '@/layouts/SettingsLayout.vue'
+
+import AppInput from '@/components/AppInput.vue'
+import AppPageTitle from '@/components/AppPageTitle.vue'
+import AppButton from '@/components/AppButton.vue'
+</script>

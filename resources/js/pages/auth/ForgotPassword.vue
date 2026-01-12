@@ -1,17 +1,3 @@
-<script setup lang="ts">
-import AppButton from '@/components/AppButton.vue'
-import AppInput from '@/components/AppInput.vue'
-import AppLink from '@/components/AppLink.vue'
-import AuthLayout from '@/layouts/AuthLayout.vue'
-import { login } from '@/routes'
-import { email } from '@/routes/password'
-import { Form, Head } from '@inertiajs/vue3'
-
-const props = defineProps<{
-	status?: string
-}>()
-</script>
-
 <template>
 	<AuthLayout
 		title="Forgot password"
@@ -61,3 +47,16 @@ const props = defineProps<{
 		</div>
 	</AuthLayout>
 </template>
+<script setup lang="ts">
+import AppButton from '@/components/AppButton.vue'
+import AppInput from '@/components/AppInput.vue'
+import AppLink from '@/components/AppLink.vue'
+import AuthLayout from '@/layouts/AuthLayout.vue'
+import { login } from '@/routes'
+import { email } from '@/routes/password'
+import { Form, Head } from '@inertiajs/vue3'
+
+const props = defineProps<{
+	status?: string
+}>()
+</script>

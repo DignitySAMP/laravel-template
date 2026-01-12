@@ -1,38 +1,3 @@
-<script setup lang="ts">
-import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
-import { Form } from '@inertiajs/vue3'
-
-import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth'
-import { regenerateRecoveryCodes } from '@/routes/two-factor'
-import { EyeIcon, EyeSlashIcon, LockClosedIcon, ArrowPathIcon  } from '@heroicons/vue/24/outline'
-
-import AppButton from '@/components/AppButton.vue'
-import AppAlert from '@/components/AppAlert.vue'
-
-const { recoveryCodesList, fetchRecoveryCodes, errors } = useTwoFactorAuth()
-const isRecoveryCodesVisible = ref<boolean>(false)
-const recoveryCodeSectionRef = useTemplateRef('recoveryCodeSectionRef')
-
-const toggleRecoveryCodesVisibility = async () => {
-	if (!isRecoveryCodesVisible.value && !recoveryCodesList.value.length) {
-		await fetchRecoveryCodes()
-	}
-
-	isRecoveryCodesVisible.value = !isRecoveryCodesVisible.value
-
-	if (isRecoveryCodesVisible.value) {
-		await nextTick()
-		recoveryCodeSectionRef.value?.scrollIntoView({ behavior: 'smooth' })
-	}
-}
-
-onMounted(async () => {
-	if (!recoveryCodesList.value.length) {
-		await fetchRecoveryCodes()
-	}
-})
-</script>
-
 <template>
 	<div class="w-full p-6 shadow-md rounded-lg border border-gray-200">
 		<div class="grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 pt-4 px-4">
@@ -57,7 +22,7 @@ onMounted(async () => {
 					:icon="isRecoveryCodesVisible ? EyeSlashIcon : EyeIcon"
 					class="max-w-52"
 				/>
-				
+
 				<Form
 					v-if="isRecoveryCodesVisible && recoveryCodesList.length"
 					v-bind="regenerateRecoveryCodes.form()"
@@ -83,7 +48,7 @@ onMounted(async () => {
 					'relative overflow-hidden transition-all duration-300',
 					isRecoveryCodesVisible ? 'h-auto opacity-100' : 'h-0 opacity-0',
 				]"
-			>	
+			>
 				<div
 					v-if="errors?.length"
 					class="mt-6"
@@ -129,3 +94,37 @@ onMounted(async () => {
 		</div>
 	</div>
 </template>
+<script setup lang="ts">
+import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
+import { Form } from '@inertiajs/vue3'
+
+import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth'
+import { regenerateRecoveryCodes } from '@/routes/two-factor'
+import { EyeIcon, EyeSlashIcon, LockClosedIcon, ArrowPathIcon } from '@heroicons/vue/24/outline'
+
+import AppButton from '@/components/AppButton.vue'
+import AppAlert from '@/components/AppAlert.vue'
+
+const { recoveryCodesList, fetchRecoveryCodes, errors } = useTwoFactorAuth()
+const isRecoveryCodesVisible = ref<boolean>(false)
+const recoveryCodeSectionRef = useTemplateRef('recoveryCodeSectionRef')
+
+const toggleRecoveryCodesVisibility = async () => {
+	if (!isRecoveryCodesVisible.value && !recoveryCodesList.value.length) {
+		await fetchRecoveryCodes()
+	}
+
+	isRecoveryCodesVisible.value = !isRecoveryCodesVisible.value
+
+	if (isRecoveryCodesVisible.value) {
+		await nextTick()
+		recoveryCodeSectionRef.value?.scrollIntoView({ behavior: 'smooth' })
+	}
+}
+
+onMounted(async () => {
+	if (!recoveryCodesList.value.length) {
+		await fetchRecoveryCodes()
+	}
+})
+</script>

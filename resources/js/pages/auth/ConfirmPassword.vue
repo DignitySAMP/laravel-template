@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import AppButton from '@/components/AppButton.vue'
-import AppInput from '@/components/AppInput.vue'
-import AuthLayout from '@/layouts/AuthLayout.vue'
-import { store } from '@/routes/password/confirm'
-import { Form, Head } from '@inertiajs/vue3'
-</script>
-
 <template>
 	<AuthLayout
 		title="Confirm your password"
@@ -44,3 +36,10 @@ import { Form, Head } from '@inertiajs/vue3'
 		</Form>
 	</AuthLayout>
 </template>
+<script setup lang="ts">
+import AppButton from '@/components/AppButton.vue'
+import AppInput from '@/components/AppInput.vue'
+import AuthLayout from '@/layouts/AuthLayout.vue'
+import { store } from '@/routes/password/confirm'
+import { Form, Head } from '@inertiajs/vue3'
+</script>
