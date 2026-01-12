@@ -51,7 +51,7 @@
 						text="Cancel"
 						type="submit"
 						@click="
-							showDeleteModal = false
+							showDeleteModal = false;
 							form.reset()
 						"
 						theme="secondary"
