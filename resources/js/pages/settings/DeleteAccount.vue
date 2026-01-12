@@ -81,7 +81,7 @@ import { useForm } from '@inertiajs/vue3'
 
 import { destroy } from '@/actions/App/Http/Controllers/Settings/ProfileController'
 
-const showDeleteModal = ref<boolean>(true)
+const showDeleteModal = ref<boolean>(false)
 
 const form = useForm({
 	password: '',
