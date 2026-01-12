@@ -6,10 +6,11 @@ import { Head, useForm, usePage } from '@inertiajs/vue3'
 import AppButton from '@/components/AppButton.vue'
 import AppLink from '@/components/AppLink.vue'
 import AppInput from '@/components/AppInput.vue'
-import DeleteUser from '@/components/DeleteUser.vue'
 import AppPageTitle from '@/components/AppPageTitle.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'
+
+import DeleteAccount from '@/pages/settings/DeleteAccount.vue'
 
 interface Props {
 	mustVerifyEmail: boolean
@@ -123,8 +124,8 @@ const submit = () => {
 					</div>
 				</form>
 			</div>
-
-			<DeleteUser />
+			
+			<DeleteAccount/>
 		</SettingsLayout>
 	</AppLayout>
 </template>

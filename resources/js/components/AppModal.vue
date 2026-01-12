@@ -9,7 +9,7 @@
 	>
 		<div
 			v-if="props.show"
-			class="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm"
+			class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
 			@click="emit('close')"
 		>
 			<div
