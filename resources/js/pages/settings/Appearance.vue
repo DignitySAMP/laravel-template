@@ -2,7 +2,7 @@
 import { Head } from '@inertiajs/vue3'
 
 import { useAppearance } from '@/composables/useAppearance'
-import { ComputerDesktopIcon, MoonIcon, SunIcon } from '@heroicons/vue/24/solid'
+import { ComputerDesktopIcon, MoonIcon, SunIcon } from '@heroicons/vue/24/outline'
 
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'

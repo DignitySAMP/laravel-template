@@ -1,16 +1,20 @@
 <script setup lang="ts">
-import AppPageTitle from '@/components/AppPageTitle.vue'
-import TwoFactorRecoveryCodes from '@/components/TwoFactorRecoveryCodes.vue'
-import TwoFactorSetupModal from '@/components/TwoFactorSetupModal.vue'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { onUnmounted, ref } from 'vue'
+import { Form, Head } from '@inertiajs/vue3'
+
+import { disable, enable } from '@/routes/two-factor'
+import { ShieldCheckIcon, ShieldExclamationIcon } from '@heroicons/vue/24/outline'
 import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth'
+
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'
-import { disable, enable } from '@/routes/two-factor'
-import { Form, Head } from '@inertiajs/vue3'
-import { ShieldBan, ShieldCheck } from 'lucide-vue-next'
-import { onUnmounted, ref } from 'vue'
+
+import AppPageTitle from '@/components/AppPageTitle.vue'
+import AppBadge from '@/components/AppBadge.vue'
+import TwoFactorRecoveryCodes from '@/components/TwoFactorRecoveryCodes.vue'
+import TwoFactorSetupModal from '@/components/TwoFactorSetupModal.vue'
+
+import AppButton from '@/components/AppButton.vue'
 
 interface Props {
 	requiresConfirmation?: boolean
@@ -44,7 +48,7 @@ onUnmounted(() => {
 					v-if="!twoFactorEnabled"
 					class="flex flex-col items-start justify-start space-y-4"
 				>
-					<Badge variant="destructive">Disabled</Badge>
+					<AppBadge theme="danger">Disabled</AppBadge>
 
 					<p class="text-muted-foreground">
 						When you enable two-factor authentication, you will be prompted for a secure
@@ -53,26 +57,27 @@ onUnmounted(() => {
 					</p>
 
 					<div>
-						<Button
+						<AppButton 
 							v-if="hasSetupData"
 							@click="showSetupModal = true"
-						>
-							<ShieldCheck />
-							Continue Setup
-						</Button>
+							type="submit" 
+							:icon="ShieldCheckIcon" 
+							text="Continue Setup" 
+							name="btn_enable_2fa"
+						/>
 						<Form
 							v-else
 							v-bind="enable.form()"
 							@success="showSetupModal = true"
 							#default="{ processing }"
 						>
-							<Button
-								type="submit"
-								:disabled="processing"
-							>
-								<ShieldCheck />
-								Enable 2FA
-							</Button>
+							<AppButton 
+								type="submit" 
+								:disabled="processing" 
+								:icon="ShieldCheckIcon" 
+								text="Enable 2FA" 
+								name="btn_enable_2fa"
+							/>
 						</Form>
 					</div>
 				</div>
@@ -81,7 +86,7 @@ onUnmounted(() => {
 					v-else
 					class="flex flex-col items-start justify-start space-y-4"
 				>
-					<Badge variant="default">Enabled</Badge>
+					<AppBadge theme="primary">Enabled</AppBadge>
 
 					<p class="text-muted-foreground">
 						With two-factor authentication enabled, you will be prompted for a secure,
@@ -96,14 +101,14 @@ onUnmounted(() => {
 							v-bind="disable.form()"
 							#default="{ processing }"
 						>
-							<Button
-								variant="destructive"
-								type="submit"
+							<AppButton 
+								type="submit" 
+								:icon="ShieldExclamationIcon" 
+								text="Disable 2FA" 
+								name="btn_disable_2fa"
+								theme="danger"
 								:disabled="processing"
-							>
-								<ShieldBan />
-								Disable 2FA
-							</Button>
+							/>
 						</Form>
 					</div>
 				</div>
