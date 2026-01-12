@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HeadingSmall from '@/components/HeadingSmall.vue'
+import AppPageTitle from '@/components/AppPageTitle.vue'
 import TwoFactorRecoveryCodes from '@/components/TwoFactorRecoveryCodes.vue'
 import TwoFactorSetupModal from '@/components/TwoFactorSetupModal.vue'
 import { Badge } from '@/components/ui/badge'
@@ -43,9 +43,10 @@ onUnmounted(() => {
 		<Head title="Two-Factor Authentication" />
 		<SettingsLayout>
 			<div class="space-y-6">
-				<HeadingSmall
+				<AppPageTitle
 					title="Two-Factor Authentication"
 					description="Manage your two-factor authentication settings"
+					:small="true"
 				/>
 
 				<div

@@ -1,13 +1,9 @@
 <template>
     <div class="px-4 py-6">
-        <div class="flex flex-col py-2 my-4">
-            <h1 class="text-lg font-bold">
-                Settings
-            </h1>
-            <span class="font-light">
-                Manage your profile and account settings
-            </span>
-        </div>
+        <AppPageTitle
+            title="Settings"
+            description="Manage your profile and account settings"
+        />
         <div class="flex flex-col lg:flex-row lg:space-x-12">
 			<aside class="w-full max-w-xl lg:w-48">
                 <nav class="flex flex-col space-y-1 space-x-0">
@@ -48,6 +44,7 @@ import { show } from '@/routes/two-factor'
 import { edit as editPassword } from '@/routes/user-password'
 import { type NavItem } from '@/types'
 import { Link } from '@inertiajs/vue3'
+import AppPageTitle from '@/components/AppPageTitle.vue'
 
 const sidebarNavItems: NavItem[] = [
 	{

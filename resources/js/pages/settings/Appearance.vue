@@ -2,7 +2,7 @@
 import { Head } from '@inertiajs/vue3'
 
 import AppearanceTabs from '@/components/AppearanceTabs.vue'
-import HeadingSmall from '@/components/HeadingSmall.vue'
+import AppPageTitle from '@/components/AppPageTitle.vue'
 import { type BreadcrumbItem } from '@/types'
 
 import AppLayout from '@/layouts/AppLayout.vue'
@@ -23,9 +23,10 @@ const breadcrumbItems: BreadcrumbItem[] = [
 
 		<SettingsLayout>
 			<div class="space-y-6">
-				<HeadingSmall
+				<AppPageTitle
 					title="Appearance settings"
 					description="Update your account's appearance settings"
+					:small="true"
 				/>
 				<AppearanceTabs />
 			</div>

@@ -6,7 +6,7 @@ import SettingsLayout from '@/layouts/SettingsLayout.vue'
 import { edit } from '@/routes/user-password'
 import { Form, Head } from '@inertiajs/vue3'
 
-import HeadingSmall from '@/components/HeadingSmall.vue'
+import AppPageTitle from '@/components/AppPageTitle.vue'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -26,9 +26,10 @@ const breadcrumbItems: BreadcrumbItem[] = [
 
 		<SettingsLayout>
 			<div class="space-y-6">
-				<HeadingSmall
+				<AppPageTitle
 					title="Update password"
 					description="Ensure your account is using a long, random password to stay secure"
+					:small="true"
 				/>
 
 				<Form
