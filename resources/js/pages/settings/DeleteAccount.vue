@@ -93,7 +93,7 @@ const submit = () => {
 }
 
 const cancelDelete = () => {
-	showDeleteModal.value = false;
-	form.reset();
+	showDeleteModal.value = false
+	form.reset()
 }
 </script>

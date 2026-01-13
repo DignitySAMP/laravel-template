@@ -1,7 +1,6 @@
 import { InertiaLinkProps } from '@inertiajs/vue3'
 import type { Component } from 'vue'
 
-
 export interface Auth {
 	user: User
 }
