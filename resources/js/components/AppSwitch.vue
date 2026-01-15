@@ -1,13 +1,13 @@
 <template>
 	<div
 		@click="model = !model"
-		class="w-10 p-0.5 cursor-pointer font-medium bg-white rounded-xl shadow-sm relative group"
+		class="group relative w-10 cursor-pointer rounded-xl bg-white p-0.5 font-medium shadow-sm"
 	>
 		<div
-			class="rounded-full size-4 p-1 transition-transform duration-300 ease-in-out"
+			class="size-4 rounded-full p-1 transition-transform duration-300 ease-in-out"
 			:class="{
-				'bg-black group-hover:bg-gray-700 translate-x-5': model,
-				'bg-gray-300 group-hover:bg-gray-400 translate-x-0': !model,
+				'translate-x-5 bg-black group-hover:bg-gray-700': model,
+				'translate-x-0 bg-gray-300 group-hover:bg-gray-400': !model,
 			}"
 		/>
 	</div>

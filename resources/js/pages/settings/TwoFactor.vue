@@ -88,18 +88,18 @@
 	</AppLayout>
 </template>
 <script setup lang="ts">
-import { onUnmounted, ref } from 'vue'
 import { Form, Head } from '@inertiajs/vue3'
+import { onUnmounted, ref } from 'vue'
 
+import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth'
 import { disable, enable } from '@/routes/two-factor'
 import { ShieldCheckIcon, ShieldExclamationIcon } from '@heroicons/vue/24/outline'
-import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth'
 
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'
 
-import AppPageTitle from '@/components/AppPageTitle.vue'
 import AppBadge from '@/components/AppBadge.vue'
+import AppPageTitle from '@/components/AppPageTitle.vue'
 import TwoFactorRecoveryCodes from '@/pages/settings/2fa/TwoFactorRecoveryCodes.vue'
 import TwoFactorSetupModal from '@/pages/settings/2fa/TwoFactorSetupModal.vue'
 

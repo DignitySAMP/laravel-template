@@ -38,9 +38,9 @@ import { Head } from '@inertiajs/vue3'
 import { useAppearance } from '@/composables/useAppearance'
 import { ComputerDesktopIcon, MoonIcon, SunIcon } from '@heroicons/vue/24/outline'
 
+import AppPageTitle from '@/components/AppPageTitle.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'
-import AppPageTitle from '@/components/AppPageTitle.vue'
 
 const { appearance, updateAppearance } = useAppearance()
 

@@ -7,7 +7,7 @@
 			:tabindex="props.tabindex"
 			v-model="model"
 			:autocomplete="props.autocomplete"
-			class="size-5 checked:accent-black focus:ring-gray-500 focus:ring-2 transition duration-300"
+			class="size-5 transition duration-300 checked:accent-black focus:ring-2 focus:ring-gray-500"
 		/>
 		<label
 			class="text-sm text-gray-700"

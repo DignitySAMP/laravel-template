@@ -13,15 +13,15 @@
 			@click="emit('close')"
 		>
 			<div
-				class="relative mx-4 w-full rounded-md bg-white dark:bg-stone-800 p-6 overflow-y-auto"
+				class="relative mx-4 w-full overflow-y-auto rounded-md bg-white p-6 dark:bg-stone-800"
 				:class="[props.height, props.width]"
 				@click.stop
 			>
 				<div
-					class="right-4 top-4 absolute cursor-pointer"
+					class="absolute top-4 right-4 cursor-pointer"
 					@click="emit('close')"
 				>
-					<XMarkIcon class="size-5 text-red-500 hover:text-red-700 hover:scale-125" />
+					<XMarkIcon class="size-5 text-red-500 hover:scale-125 hover:text-red-700" />
 				</div>
 				<slot />
 			</div>

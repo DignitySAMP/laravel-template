@@ -1,5 +1,5 @@
-import { onMounted, ref } from 'vue'
 import { setCookie } from '@/composables/cookieHandler'
+import { onMounted, ref } from 'vue'
 
 type Appearance = 'light' | 'dark' | 'system'
 

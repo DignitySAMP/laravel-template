@@ -69,7 +69,7 @@
 
 	<div
 		v-else
-		class="absolute bottom-3 left-3 rounded-lg p-6 shadow-sm border border-gray-50 text-gray-600 text-sm bg-white max-w-lg flex flex-col gap-4"
+		class="absolute bottom-3 left-3 flex max-w-lg flex-col gap-4 rounded-lg border border-gray-50 bg-white p-6 text-sm text-gray-600 shadow-sm"
 	>
 		<p>
 			We use cookies to ensure you get the best experience on our website. For more
@@ -77,7 +77,7 @@
 		</p>
 		<p class="text-xs">By clicking "Accept", you agree to our use of cookies.</p>
 		<div class="flex flex-col gap-2">
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+			<div class="grid grid-cols-1 gap-2 md:grid-cols-2">
 				<AppButton
 					name="btn-view-cookies"
 					type="submit"
@@ -126,7 +126,7 @@
 					<div
 						v-for="(cookie, cookie_index) in getCookiesForType(cookie_type_index)"
 						:key="cookie_index"
-						class="grid grid-cols-[1fr_auto] gap-2 bg-gray-50 border border-gray-100 rounded-lg text-sm px-4 py-2"
+						class="grid grid-cols-[1fr_auto] gap-2 rounded-lg border border-gray-100 bg-gray-50 px-4 py-2 text-sm"
 					>
 						<div class="flex flex-col">
 							<span
@@ -134,7 +134,7 @@
 								v-html="cookie.name"
 							/>
 							<span
-								class="text-wrap font-light"
+								class="font-light text-wrap"
 								v-html="cookie.description"
 							/>
 						</div>
@@ -156,16 +156,16 @@
 	</AppModal>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { enumKeys } from '@/lib/utils'
 import {
 	CookieTypes,
+	getCookie,
+	getCookieExpirationString,
 	getCookiesForType,
 	getCookieTypeName,
-	getCookieExpirationString,
-	getCookie,
 	setCookie,
 } from '@/composables/cookieHandler'
+import { enumKeys } from '@/lib/utils'
+import { onMounted, ref } from 'vue'
 
 import AppButton from '@/components/AppButton.vue'
 import AppModal from '@/components/AppModal.vue'

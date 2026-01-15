@@ -1,6 +1,6 @@
 <template>
 	<span
-		class="text-xs px-2 py-0.5 rounded-lg tracking-wider select-none"
+		class="rounded-lg px-2 py-0.5 text-xs tracking-wider select-none"
 		:class="{
 			'bg-black text-white': props.theme === 'primary',
 			'bg-gray-300 text-gray-800': props.theme === 'secondary',

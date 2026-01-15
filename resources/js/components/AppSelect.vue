@@ -4,12 +4,12 @@
 		class="relative text-black"
 	>
 		<div
-			class="w-full px-4 py-2 flex justify-between items-center border rounded-lg transition duration-300"
+			class="flex w-full items-center justify-between rounded-lg border px-4 py-2 transition duration-300"
 			:class="[
 				props.error
 					? 'border-red-300 focus:ring-red-600'
 					: 'border-gray-300 focus:ring-black',
-				showSelectItems ? 'ring-2 border-transparent outline-none' : '',
+				showSelectItems ? 'border-transparent ring-2 outline-none' : '',
 			]"
 			@click="onClickSelect()"
 		>
@@ -21,7 +21,7 @@
 
 		<div
 			v-if="showSelectItems"
-			class="mt-1 w-full px-4 py-2 flex flex-col border border-gray-300 rounded-lg"
+			class="mt-1 flex w-full flex-col rounded-lg border border-gray-300 px-4 py-2"
 		>
 			<input
 				v-if="search"
@@ -30,14 +30,14 @@
 				placeholder="Search for query"
 				:disabled="disabled"
 				type="text"
-				class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:border-transparent outline-none border-gray-300 focus:ring-black"
+				class="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none focus:border-transparent focus:ring-2 focus:ring-black"
 				v-model="searchModel"
 			/>
 			<p
 				@click="onSelectItem(item)"
 				v-for="(item, key) in filteredItems"
 				:key="key"
-				class="mt-2 p-2 hover:bg-white hover:shadow rounded-lg cursor-pointer transition duration-300"
+				class="mt-2 cursor-pointer rounded-lg p-2 transition duration-300 hover:bg-white hover:shadow"
 			>
 				{{ item.label }}
 			</p>
@@ -45,9 +45,9 @@
 	</div>
 </template>
 <script setup lang="ts">
+import { type FormSelectItem } from '@/types/index'
 import { ChevronDownIcon } from '@heroicons/vue/24/outline'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { type FormSelectItem } from '@/types/index'
 
 const model = defineModel<FormSelectItem>()
 interface Props {

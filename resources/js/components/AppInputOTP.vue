@@ -4,7 +4,7 @@
 			<label
 				v-if="props.label || $slots.label"
 				:for="getElementId"
-				class="block text-sm font-medium w-full"
+				class="block w-full text-sm font-medium"
 				:class="props.error ? 'text-red-600' : 'text-slate-700'"
 			>
 				<slot name="label">
@@ -34,7 +34,7 @@
 					@focus="updateFocus(index)"
 					:disabled="props.disabled"
 					:autofocus="index === 0 && props.autofocus"
-					class="w-12 h-12 text-center text-lg font-semibold border rounded-lg focus:ring-2 focus:border-transparent outline-none"
+					class="h-12 w-12 rounded-lg border text-center text-lg font-semibold outline-none focus:border-transparent focus:ring-2"
 					:class="
 						props.error
 							? 'border-red-300 focus:ring-red-600'
@@ -45,7 +45,7 @@
 			<span
 				v-if="props.error"
 				v-html="props.error"
-				class="text-sm text-red-500 block mt-1"
+				class="mt-1 block text-sm text-red-500"
 			/>
 		</div>
 	</div>

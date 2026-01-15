@@ -94,13 +94,13 @@
 	</AppLayout>
 </template>
 <script setup lang="ts">
-import { send } from '@/routes/verification'
 import { update } from '@/actions/App/Http/Controllers/Settings/ProfileController'
+import { send } from '@/routes/verification'
 import { Head, useForm, usePage } from '@inertiajs/vue3'
 
 import AppButton from '@/components/AppButton.vue'
-import AppLink from '@/components/AppLink.vue'
 import AppInput from '@/components/AppInput.vue'
+import AppLink from '@/components/AppLink.vue'
 import AppPageTitle from '@/components/AppPageTitle.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'

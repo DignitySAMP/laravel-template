@@ -3,7 +3,7 @@
 		:id="getElementId"
 		:tabindex="props.tabindex"
 		:name="props.name"
-		class="w-full px-4 py-1.5 rounded-lg cursor-pointer transition-colors font-medium"
+		class="w-full cursor-pointer rounded-lg px-4 py-1.5 font-medium transition-colors"
 		:class="{
 			'bg-black text-white hover:bg-gray-800': props.theme === 'primary',
 			'bg-gray-300 text-gray-800 hover:bg-gray-400': props.theme === 'secondary',
@@ -19,7 +19,7 @@
 				v-if="props.icon !== undefined"
 				:is="props.icon"
 			/>
-			<span class="font-medium select-none text-sm">
+			<span class="text-sm font-medium select-none">
 				{{ props.text }}
 			</span>
 		</div>

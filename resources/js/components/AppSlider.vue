@@ -11,7 +11,7 @@
 		<span v-html="numberToFixed(model)" />
 
 		<input
-			class="w-16 text-center text-indigo-600 font-bold"
+			class="w-16 text-center font-bold text-indigo-600"
 			@change="onCeilPriceSlider()"
 			type="number"
 			:min="props.min"

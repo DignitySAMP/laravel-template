@@ -1,7 +1,7 @@
 <template>
 	<Link
 		:href="home().url"
-		class="font-semibold hover:scale-110 transition duration-300"
+		class="font-semibold transition duration-300 hover:scale-110"
 		:class="[props.size === 'large' ? 'text-4xl' : 'text-lg']"
 	>
 		{{ usePage().props.name }}

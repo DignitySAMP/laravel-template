@@ -1,9 +1,9 @@
 <template>
 	<div
-		class="p-6 border rounded-lg grid grid-cols-[1fr_auto] gap-4 justify-center items-center"
+		class="grid grid-cols-[1fr_auto] items-center justify-center gap-4 rounded-lg border p-6"
 		:class="{
-			'bg-black border-gray-800 text-white ': props.theme === 'primary',
-			'bg-gray-200 text-gray-800 border-gray-400': props.theme === 'secondary',
+			'border-gray-800 bg-black text-white': props.theme === 'primary',
+			'border-gray-400 bg-gray-200 text-gray-800': props.theme === 'secondary',
 			'border-red-500 bg-red-300 text-red-800': props.theme === 'danger',
 		}"
 	>
