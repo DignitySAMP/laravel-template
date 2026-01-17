@@ -5,9 +5,7 @@
 	>
 		<div class="flex flex-col items-center justify-center">
 			<div class="mb-3 w-auto rounded-full p-0.5">
-				<div
-					class="relative overflow-hidden rounded-full p-2.5"
-				>
+				<div class="relative overflow-hidden rounded-full p-2.5">
 					<div class="absolute inset-0 grid grid-cols-5 opacity-50">
 						<div
 							v-for="i in 5"
