@@ -1,12 +1,12 @@
 <template>
 	<AppModal
-		:show="props.show"
+		:show="isOpen"
 		width="sm:max-w-md"
 	>
-		<div class="flex items-center justify-center">
-			<div class="mb-3 w-auto rounded-full border border-border bg-card p-0.5 shadow-sm">
+		<div class="flex flex-col items-center justify-center">
+			<div class="mb-3 w-auto rounded-full p-0.5">
 				<div
-					class="relative overflow-hidden rounded-full border border-border bg-muted p-2.5"
+					class="relative overflow-hidden rounded-full p-2.5"
 				>
 					<div class="absolute inset-0 grid grid-cols-5 opacity-50">
 						<div
@@ -64,12 +64,12 @@
 						</div>
 
 						<div class="flex w-full items-center space-x-5">
-							<Button
+							<AppButton
+								name="btn_modal_next"
+								:text="modalConfig.buttonText"
 								class="w-full"
 								@click="handleModalNextStep"
-							>
-								{{ modalConfig.buttonText }}
-							</Button>
+							/>
 						</div>
 
 						<div class="relative flex w-full items-center justify-center">
@@ -96,19 +96,13 @@
 										:value="manualSetupKey"
 										class="h-full w-full bg-background p-3 text-foreground"
 									/>
-									<button
+									<AppButton
+										text=""
+										:icon="copied ? CheckIcon : ClipboardDocumentIcon"
+										name="btn_copy"
 										@click="copy(manualSetupKey || '')"
 										class="relative block h-auto border-l border-border px-3 hover:bg-muted"
-									>
-										<CheckIcon
-											v-if="copied"
-											class="w-4 text-green-500"
-										/>
-										<ClipboardDocumentIcon
-											v-else
-											class="w-4"
-										/>
-									</button>
+									/>
 								</template>
 							</div>
 						</div>
@@ -149,22 +143,22 @@
 							</div>
 
 							<div class="flex w-full items-center space-x-5">
-								<Button
+								<AppButton
+									name="btn_cancel"
+									text="Back"
 									type="button"
 									variant="outline"
 									class="w-auto flex-1"
 									@click="showVerificationStep = false"
 									:disabled="processing"
-								>
-									Back
-								</Button>
-								<Button
+								/>
+								<AppButton
+									name="btn_submit"
 									type="submit"
+									text="Confirm"
 									class="w-auto flex-1"
 									:disabled="processing || code.length < 6"
-								>
-									Confirm
-								</Button>
+								/>
 							</div>
 						</div>
 					</Form>
@@ -174,7 +168,6 @@
 	</AppModal>
 </template>
 <script setup lang="ts">
-// TODO: FIXME: untested, to be tested and adjusted
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue'
 
 import { confirm } from '@/routes/two-factor'
@@ -192,9 +185,9 @@ import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth'
 import AppModal from '@/components/AppModal.vue'
 import AppAlert from '@/components/AppAlert.vue'
 import AppInputOTP from '@/components/AppInputOTP.vue'
+import AppButton from '@/components/AppButton.vue'
 
 const props = defineProps<{
-	show: boolean
 	requiresConfirmation: boolean
 	twoFactorEnabled: boolean
 }>()
@@ -261,7 +254,6 @@ const resetModalState = () => {
 	showVerificationStep.value = false
 	code.value = ''
 }
-
 watch(
 	() => isOpen.value,
 	async (isOpen) => {
