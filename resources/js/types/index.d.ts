@@ -35,7 +35,7 @@ export interface User {
 
 export type BreadcrumbItemType = BreadcrumbItem
 
-export interface FormSelectItem {
+export interface SelectItem {
 	label: string
-	value: string | number
+	value: string
 }

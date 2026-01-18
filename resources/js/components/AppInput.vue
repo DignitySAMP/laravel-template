@@ -1,7 +1,11 @@
 <template>
-	<div class="w-full">
+	<Primitive
+		:as="props.wrapper"
+		:as-child="props.wrapperAsChild"
+		class="w-full"
+	>
 		<div class="flex gap-2">
-			<label
+			<Label
 				v-if="props.label || $slots.label"
 				:for="getElementId"
 				class="block text-sm font-medium w-full"
@@ -13,28 +17,29 @@
 						<span
 							v-if="props.required"
 							class="ml-1 text-xs text-gray-500"
-							v-html="'*'"
-						/>
+						>
+							*
+						</span>
 					</div>
 				</slot>
-			</label>
+			</Label>
 		</div>
 		<div
 			class="relative"
 			:class="props.label ? 'mt-1' : ''"
 		>
-			<input
+			<Primitive
+				:as="props.as"
+				:as-child="props.asChild"
 				:id="getElementId"
 				:name="props.name"
-				:type="
-					props.type === 'password' ? (togglePassword ? 'text' : 'password') : props.type
-				"
+				:type="computedType"
 				:placeholder="props.placeholder"
 				:disabled="props.disabled"
 				:autocomplete="props.autocomplete"
 				:required="props.required"
 				v-model="model"
-				class="w-full px-2 py-1 border rounded-lg focus:ring-2 focus:border-transparent outline-none text-sm"
+				class="w-full px-2 py-1 border rounded-lg focus:ring-2 focus:border-transparent outline-none text-sm disabled:opacity-50 disabled:cursor-not-allowed"
 				:class="
 					props.error
 						? 'border-red-300 focus:ring-red-600'
@@ -45,6 +50,7 @@
 			/>
 
 			<div
+				v-if="props.type === 'email' || props.type === 'password'"
 				class="absolute top-1.5 right-1.5"
 				:class="props.error ? 'text-red-300' : 'text-black'"
 			>
@@ -56,23 +62,26 @@
 					:is="togglePassword ? EyeSlashIcon : EyeIcon"
 					v-if="props.type === 'password'"
 					@click="togglePassword = !togglePassword"
-					:toggle="togglePassword"
-					class="cursor-pointer size-5 opacity-50 hover:text-neutral-700"
+					class="cursor-pointer size-5 opacity-50 hover:text-neutral-700 transition-colors"
 				/>
 			</div>
 		</div>
 		<span
 			v-if="props.error"
-			v-html="props.error"
-			class="text-sm text-red-500"
-		/>
-	</div>
+			class="text-sm text-red-500 mt-1 block"
+		>
+			{{ props.error }}
+		</span>
+	</Primitive>
 </template>
+
 <script setup lang="ts">
+import { Label, Primitive } from 'reka-ui'
 import { computed, ref } from 'vue'
 import { EnvelopeIcon, EyeIcon, EyeSlashIcon } from '@heroicons/vue/24/outline'
 
-const model = defineModel()
+const model = defineModel<string | number>()
+
 interface Props {
 	id?: string
 	name: string
@@ -85,6 +94,10 @@ interface Props {
 	required?: boolean
 	autofocus?: boolean
 	tabindex?: number
+	as?: string
+	asChild?: boolean
+	wrapper?: string
+	wrapperAsChild?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -93,8 +106,18 @@ const props = withDefaults(defineProps<Props>(), {
 	disabled: false,
 	required: false,
 	autofocus: false,
+	as: 'input',
+	asChild: false,
+	wrapper: 'div',
+	wrapperAsChild: false,
 })
 
 const togglePassword = ref<boolean>(false)
 const getElementId = computed((): string => props.id ?? props.name)
+const computedType = computed(() => {
+	if (props.type === 'password') {
+		return togglePassword.value ? 'text' : 'password'
+	}
+	return props.type
+})
 </script>

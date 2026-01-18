@@ -1,49 +1,68 @@
 <template>
-	<button
+	<Primitive
+		:as="props.as"
+		:as-child="props.asChild"
 		:id="getElementId"
 		:tabindex="props.tabindex"
 		:name="props.name"
-		class="w-full px-4 py-1.5 rounded-lg cursor-pointer transition-colors font-medium"
-		:class="{
-			'bg-black text-white hover:bg-gray-800': props.theme === 'primary',
-			'bg-gray-300 text-gray-800 hover:bg-gray-400': props.theme === 'secondary',
-			'bg-red-500 text-white hover:bg-red-600': props.theme === 'danger',
-		}"
+		:type="props.type"
+		:disabled="props.disabled"
+		class="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-lg cursor-pointer transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+		:class="[
+			{
+				'bg-black text-white hover:bg-gray-800':
+					props.theme === 'primary' && !props.disabled,
+				'bg-gray-300 text-gray-800 hover:bg-gray-400':
+					props.theme === 'secondary' && !props.disabled,
+				'bg-red-500 text-white hover:bg-red-600':
+					props.theme === 'danger' && !props.disabled,
+			},
+			props.fullWidth ? 'w-full' : '',
+		]"
 	>
-		<div
-			class="flex w-full items-center gap-4 text-center"
-			:class="props.icon !== undefined ? 'w-full justify-between' : 'justify-center'"
-		>
-			<component
-				class="size-4"
-				v-if="props.icon !== undefined"
-				:is="props.icon"
-			/>
-			<span class="font-medium select-none text-sm">
-				{{ props.text }}
-			</span>
-		</div>
-	</button>
+		<component
+			v-if="props.iconLeft"
+			:is="props.iconLeft"
+			class="size-4"
+		/>
+		<span class="select-none text-sm">
+			<slot>{{ props.text }}</slot>
+		</span>
+		<component
+			v-if="props.iconRight"
+			:is="props.iconRight"
+			class="size-4"
+		/>
+	</Primitive>
 </template>
+
 <script setup lang="ts">
-import { type Component, computed } from 'vue'
+import { Primitive } from 'reka-ui'
+import { computed, type Component } from 'vue'
 
 interface Props {
-	name: string
-	text: string
+	name?: string
+	text?: string
 	id?: string
-	type?: string
+	type?: 'button' | 'submit' | 'reset'
 	theme?: 'primary' | 'secondary' | 'danger'
-	icon?: Component
+	iconLeft?: Component
+	iconRight?: Component
 	disabled?: boolean
 	tabindex?: number
+	fullWidth?: boolean
+	as?: string
+	asChild?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	type: 'button',
 	theme: 'primary',
 	disabled: false,
+	fullWidth: true,
+	as: 'button',
+	asChild: false,
 })
 
-const getElementId = computed((): string => props.id ?? props.name)
+const getElementId = computed((): string | undefined => props.id ?? props.name)
 </script>
