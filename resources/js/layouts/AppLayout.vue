@@ -1,11 +1,11 @@
 <template>
 	<AppWrapper>
-		<div class="min-h-screen flex flex-col">
-			<nav class="bg-white border-b">
-				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div class="flex justify-between h-16 items-center">
+		<div class="flex min-h-screen flex-col">
+			<nav class="border-b bg-white">
+				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+					<div class="flex h-16 items-center justify-between">
 						<AppLogo />
-						<div class="flex gap-4 items-center">
+						<div class="flex items-center gap-4">
 							<Link
 								v-for="(item, index) in navigationItems"
 								:key="index"
@@ -13,18 +13,18 @@
 								:method="item.method"
 								:class="
 									isCurrentRoute(item.href)
-										? 'text-gray-900 font-medium'
-										: 'text-gray-600 hover:text-gray-900 transition duration-300'
+										? 'font-medium text-gray-900'
+										: 'text-gray-600 transition duration-300 hover:text-gray-900'
 								"
-								class="cursor-pointer flex gap-2"
+								class="flex cursor-pointer gap-2"
 							>
 								<component
 									:is="item.icon"
 									class="size-5"
 									:class="
 										isCurrentRoute(item.href)
-											? 'text-gray-900 font-medium'
-											: 'text-gray-600 hover:text-gray-900 transition duration-300'
+											? 'font-medium text-gray-900'
+											: 'text-gray-600 transition duration-300 hover:text-gray-900'
 									"
 								/>
 								<span>{{ item.title }}</span>
@@ -34,15 +34,15 @@
 				</div>
 			</nav>
 
-			<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full h-full grow">
+			<div class="mx-auto h-full w-full max-w-6xl grow px-4 py-12 sm:px-6 lg:px-8">
 				<slot />
 			</div>
 		</div>
 	</AppWrapper>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue'
 import { InertiaLinkProps, Link, usePage } from '@inertiajs/vue3'
+import { computed } from 'vue'
 
 import { getNavigationItemsForUser } from '@/composables/getNavigation'
 const navigationItems = getNavigationItemsForUser()

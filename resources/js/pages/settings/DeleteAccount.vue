@@ -27,7 +27,7 @@
 				width="w-full max-w-[calc(100%-2rem)] sm:max-w-lg space-y-4"
 			>
 				<h2 class="text-lg font-bold">Are you sure you want to delete your account?</h2>
-				<p class="text-gray-600 text-sm">
+				<p class="text-sm text-gray-600">
 					Once your account is deleted, all of its resources and data will also be
 					permanently deleted. Please enter your password to confirm you would like to
 					permanently delete your account.
@@ -68,14 +68,14 @@
 	</div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useForm } from '@inertiajs/vue3'
 import { destroy } from '@/actions/App/Http/Controllers/Settings/ProfileController'
+import { useForm } from '@inertiajs/vue3'
+import { ref } from 'vue'
 
-import AppPageTitle from '@/components/AppPageTitle.vue'
-import AppModal from '@/components/AppModal.vue'
-import AppInput from '@/components/AppInput.vue'
 import AppButton from '@/components/AppButton.vue'
+import AppInput from '@/components/AppInput.vue'
+import AppModal from '@/components/AppModal.vue'
+import AppPageTitle from '@/components/AppPageTitle.vue'
 
 const showDeleteModal = ref<boolean>(false)
 

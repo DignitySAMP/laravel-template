@@ -38,9 +38,9 @@ import { Head } from '@inertiajs/vue3'
 import { useAppearance } from '@/composables/useAppearance'
 import { Monitor, Moon, Sun } from 'lucide-vue-next'
 
+import AppPageTitle from '@/components/AppPageTitle.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'
-import AppPageTitle from '@/components/AppPageTitle.vue'
 
 const { appearance, updateAppearance } = useAppearance()
 

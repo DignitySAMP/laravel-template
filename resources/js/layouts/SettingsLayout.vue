@@ -11,7 +11,7 @@
 						:href="item.href"
 						v-for="item in sidebarNavItems"
 						:key="toUrl(item.href)"
-						class="w-full py-1.5 rounded-lg cursor-pointer transition-colors font-medium ps-2.5"
+						class="w-full cursor-pointer rounded-lg py-1.5 ps-2.5 font-medium transition-colors"
 						:class="
 							urlIsActive(item.href, currentPath)
 								? 'bg-gray-200 text-gray-800 hover:bg-gray-300'
@@ -27,7 +27,7 @@
 				</nav>
 			</aside>
 			<div class="flex-1 md:max-w-2xl">
-				<section class="max-w-3xl space-y-12 bg-white rounded-lg shadow p-5">
+				<section class="max-w-3xl space-y-12 rounded-lg bg-white p-5 shadow">
 					<slot />
 				</section>
 			</div>
@@ -35,6 +35,7 @@
 	</div>
 </template>
 <script setup lang="ts">
+import AppPageTitle from '@/components/AppPageTitle.vue'
 import { toUrl, urlIsActive } from '@/lib/utils'
 import { edit as editAppearance } from '@/routes/appearance'
 import { edit as editProfile } from '@/routes/profile'
@@ -42,7 +43,6 @@ import { show } from '@/routes/two-factor'
 import { edit as editPassword } from '@/routes/user-password'
 import { type NavItem } from '@/types'
 import { Link } from '@inertiajs/vue3'
-import AppPageTitle from '@/components/AppPageTitle.vue'
 
 const sidebarNavItems: NavItem[] = [
 	{

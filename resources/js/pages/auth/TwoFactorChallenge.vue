@@ -9,7 +9,7 @@
 			<TwoFactorOTP v-if="!showRecoveryInput" />
 			<TwoFactorRecovery v-else />
 		</div>
-		<div class="text-center text-sm mt-4">
+		<div class="mt-4 text-center text-sm">
 			<span>or you can</span>
 			<button
 				type="button"
