@@ -1,17 +1,17 @@
-import { Component, computed } from 'vue'
 import { usePage } from '@inertiajs/vue3'
+import { Component, computed } from 'vue'
 
 import { dashboard, home, login, logout, register } from '@/routes'
 import { edit } from '@/routes/profile'
 import { type Method } from '@inertiajs/core'
 
 import {
+	ArrowRightStartOnRectangleIcon,
 	ClipboardDocumentIcon,
 	HomeIcon,
-	UserCircleIcon,
-	ArrowRightStartOnRectangleIcon,
 	KeyIcon,
 	PlusCircleIcon,
+	UserCircleIcon,
 } from '@heroicons/vue/24/outline'
 
 const page = usePage()

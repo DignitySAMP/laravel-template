@@ -1,5 +1,5 @@
 <template>
-	<div class="flex flex-col mb-4">
+	<div class="mb-4 flex flex-col">
 		<h1
 			v-if="props.title"
 			class="font-bold"
