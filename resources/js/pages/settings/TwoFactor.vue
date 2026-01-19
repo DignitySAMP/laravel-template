@@ -26,7 +26,7 @@
 							v-if="hasSetupData"
 							@click="showSetupModal = true"
 							type="submit"
-							:icon="ShieldCheckIcon"
+							:icon="ShieldCheck"
 							text="Continue Setup"
 							name="btn_enable_2fa"
 						/>
@@ -39,7 +39,7 @@
 							<AppButton
 								type="submit"
 								:disabled="processing"
-								:icon="ShieldCheckIcon"
+								:icon="ShieldCheck"
 								text="Enable 2FA"
 								name="btn_enable_2fa"
 							/>
@@ -68,7 +68,7 @@
 						>
 							<AppButton
 								type="submit"
-								:icon="ShieldExclamationIcon"
+								:icon="ShieldBan"
 								text="Disable 2FA"
 								name="btn_disable_2fa"
 								theme="danger"
@@ -93,7 +93,7 @@ import { onUnmounted, ref } from 'vue'
 
 import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth'
 import { disable, enable } from '@/routes/two-factor'
-import { ShieldCheckIcon, ShieldExclamationIcon } from '@heroicons/vue/24/outline'
+import { ShieldBan, ShieldCheck } from 'lucide-vue-next';
 
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'
