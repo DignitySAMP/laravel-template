@@ -54,12 +54,12 @@
 				class="absolute top-1.5 right-1.5"
 				:class="props.error ? 'text-red-300' : 'text-black'"
 			>
-				<EnvelopeIcon
+				<Mail
 					v-if="props.type === 'email'"
 					class="size-5 opacity-50"
 				/>
 				<component
-					:is="togglePassword ? EyeSlashIcon : EyeIcon"
+					:is="togglePassword ? EyeOff : Eye"
 					v-if="props.type === 'password'"
 					@click="togglePassword = !togglePassword"
 					class="cursor-pointer size-5 opacity-50 hover:text-neutral-700 transition-colors"
@@ -78,7 +78,7 @@
 <script setup lang="ts">
 import { Label, Primitive } from 'reka-ui'
 import { computed, ref } from 'vue'
-import { EnvelopeIcon, EyeIcon, EyeSlashIcon } from '@heroicons/vue/24/outline'
+import { Mail, Eye, EyeOff } from 'lucide-vue-next'
 
 const model = defineModel<string | number>()
 

@@ -20,7 +20,7 @@
 			>
 				<SelectValue :placeholder="props.placeholder || 'Select an option'" />
 				<SelectIcon>
-					<ChevronDownIcon class="size-5" />
+					<ChevronDown class="size-5" />
 				</SelectIcon>
 			</SelectTrigger>
 
@@ -33,7 +33,7 @@
 						v-if="props.search"
 						class="flex items-center justify-center h-6 bg-white cursor-default"
 					>
-						<ChevronUpIcon class="size-4" />
+						<ChevronUp class="size-4" />
 					</SelectScrollUpButton>
 
 					<SelectViewport class="p-2">
@@ -59,7 +59,7 @@
 							class="relative flex items-center px-8 py-2 rounded-lg cursor-pointer select-none outline-none hover:bg-gray-100 focus:bg-gray-100 data-highlighted:bg-gray-100"
 						>
 							<SelectItemIndicator class="absolute left-2 inline-flex items-center">
-								<CheckIcon class="size-4" />
+								<Check class="size-4" />
 							</SelectItemIndicator>
 							<SelectItemText>{{ item.label }}</SelectItemText>
 						</SelectItem>
@@ -68,7 +68,7 @@
 					<SelectScrollDownButton
 						class="flex items-center justify-center h-6 bg-white cursor-default"
 					>
-						<ChevronDownIcon class="size-4" />
+						<ChevronDown class="size-4" />
 					</SelectScrollDownButton>
 				</SelectContent>
 			</SelectPortal>
@@ -98,7 +98,7 @@ import {
 	SelectValue,
 	SelectViewport,
 } from 'reka-ui'
-import { ChevronDownIcon, ChevronUpIcon, CheckIcon } from '@heroicons/vue/24/outline'
+import { ChevronUp, ChevronDown, Check } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 
 export interface SelectItem {

@@ -18,7 +18,7 @@
 			:is="props.icon"
 			class="size-8 opacity-50"
 		/>
-		<BellIcon
+		<Bell
 			v-else
 			class="size-8 opacity-50"
 		/>
@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
 import { Primitive } from 'reka-ui'
-import { BellIcon } from '@heroicons/vue/24/outline'
+import { Bell } from 'lucide-vue-next'
 import type { Component } from 'vue'
 
 interface Props {

@@ -5,14 +5,7 @@ import { dashboard, home, login, logout, register } from '@/routes'
 import { edit } from '@/routes/profile'
 import { type Method } from '@inertiajs/core'
 
-import {
-	ClipboardDocumentIcon,
-	HomeIcon,
-	UserCircleIcon,
-	ArrowRightStartOnRectangleIcon,
-	KeyIcon,
-	PlusCircleIcon,
-} from '@heroicons/vue/24/outline'
+import { LogIn, UserPlus, House, Gauge, LogOut, ScanFace } from 'lucide-vue-next'
 
 const page = usePage()
 const auth = computed(() => page.props.auth.user)
@@ -31,7 +24,7 @@ export const authNavItems: NavigationItems[] = [
 		title: 'Home',
 		href: home().url,
 		auth: null,
-		icon: HomeIcon,
+		icon: House,
 	},
 
 	// auth
@@ -39,20 +32,20 @@ export const authNavItems: NavigationItems[] = [
 		title: 'Dashboard',
 		href: dashboard().url,
 		auth: true,
-		icon: ClipboardDocumentIcon,
+		icon: Gauge,
 	},
 	{
 		title: 'Profile',
 		href: edit().url,
 		auth: true,
-		icon: UserCircleIcon,
+		icon: ScanFace,
 	},
 	{
 		title: 'Logout',
 		href: logout().url,
 		method: 'post',
 		auth: true,
-		icon: ArrowRightStartOnRectangleIcon,
+		icon: LogOut,
 	},
 
 	// guest
@@ -60,13 +53,13 @@ export const authNavItems: NavigationItems[] = [
 		title: 'Register',
 		href: register().url,
 		auth: false,
-		icon: PlusCircleIcon,
+		icon: UserPlus,
 	},
 	{
 		title: 'Login',
 		href: login().url,
 		auth: false,
-		icon: KeyIcon,
+		icon: LogIn,
 	},
 ]
 

@@ -36,7 +36,7 @@
 import { Head } from '@inertiajs/vue3'
 
 import { useAppearance } from '@/composables/useAppearance'
-import { ComputerDesktopIcon, MoonIcon, SunIcon } from '@heroicons/vue/24/outline'
+import { Monitor, Moon, Sun } from 'lucide-vue-next'
 
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'
@@ -45,8 +45,8 @@ import AppPageTitle from '@/components/AppPageTitle.vue'
 const { appearance, updateAppearance } = useAppearance()
 
 const tabs = [
-	{ value: 'light', Icon: SunIcon, label: 'Light' },
-	{ value: 'dark', Icon: MoonIcon, label: 'Dark' },
-	{ value: 'system', Icon: ComputerDesktopIcon, label: 'System' },
+	{ value: 'light', Icon: Sun, label: 'Light' },
+	{ value: 'dark', Icon: Moon, label: 'Dark' },
+	{ value: 'system', Icon: Monitor, label: 'System' },
 ] as const
 </script>

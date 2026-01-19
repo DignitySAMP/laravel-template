@@ -26,8 +26,8 @@
 					<DialogClose
 						class="absolute right-4 top-4 cursor-pointer rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 disabled:pointer-events-none"
 					>
-						<XMarkIcon
-							class="size-5 text-red-500 hover:text-red-700 hover:scale-125 transition-transform"
+						<X
+							class="size-5 hover:scale-125 transition-transform"
 						/>
 						<span class="sr-only">Close</span>
 					</DialogClose>
@@ -63,7 +63,8 @@ import {
 	DialogRoot,
 	DialogTitle,
 } from 'reka-ui'
-import { XMarkIcon } from '@heroicons/vue/24/outline'
+
+import { X } from 'lucide-vue-next'
 import { computed } from 'vue'
 
 interface Props {

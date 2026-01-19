@@ -2,7 +2,7 @@
 	<div class="w-full p-6 shadow-md rounded-lg border border-gray-200">
 		<div class="grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 pt-4 px-4">
 			<span class="flex gap-3 leading-none font-semibold">
-				<LockClosedIcon class="size-4" />
+				<Lock class="size-4" />
 				2FA Recovery Codes
 			</span>
 			<span class="text-sm text-gray-600">
@@ -19,7 +19,7 @@
 					name="btn_toggle_code_visibility"
 					@click="toggleRecoveryCodesVisibility"
 					:text="isRecoveryCodesVisible ? 'Hide' : 'View' + ' Recovery Codes'"
-					:icon="isRecoveryCodesVisible ? EyeSlashIcon : EyeIcon"
+					:icon="isRecoveryCodesVisible ? EyeOff : Eye"
 					class="max-w-52"
 				/>
 
@@ -37,7 +37,7 @@
 						name="btn_toggle_code_visibility"
 						@click="toggleRecoveryCodesVisibility"
 						text="Regenerate Codes"
-						:icon="ArrowPathIcon"
+						:icon="RotateCw"
 						class="max-w-52"
 						:disabled="processing"
 					/>
@@ -100,7 +100,7 @@ import { Form } from '@inertiajs/vue3'
 
 import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth'
 import { regenerateRecoveryCodes } from '@/routes/two-factor'
-import { EyeIcon, EyeSlashIcon, LockClosedIcon, ArrowPathIcon } from '@heroicons/vue/24/outline'
+import { Eye, EyeOff, Lock, RotateCw } from 'lucide-vue-next' 
 
 import AppButton from '@/components/AppButton.vue'
 import AppAlert from '@/components/AppAlert.vue'

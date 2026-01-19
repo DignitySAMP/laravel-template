@@ -20,7 +20,7 @@
 							class="border-b border-border last:border-b-0"
 						/>
 					</div>
-					<ArrowsPointingOutIcon class="relative z-20 size-6 text-gray-500" />
+					<ScanLine class="relative z-20 size-6 text-gray-500" />
 				</div>
 				<h1 class="text-lg leading-none font-semibold">
 					{{ modalConfig.title }}
@@ -47,7 +47,7 @@
 									v-if="!qrCodeSvg"
 									class="absolute inset-0 z-10 flex aspect-square h-auto w-full animate-pulse items-center justify-center bg-background"
 								>
-									<ArrowPathIcon class="animate-spin size-6" />
+									<RotateCw class="animate-spin size-6" />
 								</div>
 								<div
 									v-else
@@ -85,7 +85,7 @@
 									v-if="!manualSetupKey"
 									class="flex h-full w-full items-center justify-center bg-muted p-3"
 								>
-									<ArrowPathIcon class="animate-spin size-6" />
+									<RotateCw class="animate-spin size-6" />
 								</div>
 								<template v-else>
 									<input
@@ -96,7 +96,7 @@
 									/>
 									<AppButton
 										text=""
-										:icon="copied ? CheckIcon : ClipboardDocumentIcon"
+										:icon="copied ? Check : Copy"
 										name="btn_copy"
 										@click="copy(manualSetupKey || '')"
 										class="relative block h-auto border-l border-border px-3 hover:bg-muted"
@@ -171,12 +171,7 @@ import { computed, nextTick, ref, useTemplateRef, watch } from 'vue'
 import { confirm } from '@/routes/two-factor'
 import { Form } from '@inertiajs/vue3'
 import { useClipboard } from '@vueuse/core'
-import {
-	ArrowsPointingOutIcon,
-	ArrowPathIcon,
-	CheckIcon,
-	ClipboardDocumentIcon,
-} from '@heroicons/vue/24/outline'
+import { Check, Copy, RotateCw, ScanLine } from 'lucide-vue-next';
 
 import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth'
 
