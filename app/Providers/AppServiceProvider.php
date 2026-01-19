@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Validation\Rules\Password;
 use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Validation\Rules\Password;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,7 +35,6 @@ class AppServiceProvider extends ServiceProvider
          */
         Model::shouldBeStrict();
 
-
         $this->configureDefaults();
     }
 
@@ -44,8 +43,8 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-
-    private function configureDefaults() {
+    private function configureDefaults()
+    {
         Date::use(CarbonImmutable::class);
 
         DB::prohibitDestructiveCommands(
