@@ -2,7 +2,7 @@
 	<div class="w-full">
 		<Label
 			v-if="props.label"
-			class="block text-sm font-medium text-slate-700 mb-1"
+			class="mb-1 block text-sm font-medium text-slate-700"
 		>
 			{{ props.label }}
 		</Label>
@@ -11,11 +11,11 @@
 			:disabled="props.disabled"
 		>
 			<SelectTrigger
-				class="w-full px-4 py-2 flex justify-between items-center border rounded-lg transition duration-300 bg-white disabled:opacity-50 disabled:cursor-not-allowed"
+				class="flex w-full items-center justify-between rounded-lg border bg-white px-4 py-2 transition duration-300 disabled:cursor-not-allowed disabled:opacity-50"
 				:class="
 					props.error
 						? 'border-red-300 focus:ring-red-600'
-						: 'border-gray-300 focus:ring-2 focus:ring-black focus:border-transparent'
+						: 'border-gray-300 focus:border-transparent focus:ring-2 focus:ring-black'
 				"
 			>
 				<SelectValue :placeholder="props.placeholder || 'Select an option'" />
@@ -26,12 +26,12 @@
 
 			<SelectPortal>
 				<SelectContent
-					class="mt-1 overflow-hidden bg-white border border-gray-300 rounded-lg shadow-lg"
+					class="mt-1 overflow-hidden rounded-lg border border-gray-300 bg-white shadow-lg"
 					:side-offset="5"
 				>
 					<SelectScrollUpButton
 						v-if="props.search"
-						class="flex items-center justify-center h-6 bg-white cursor-default"
+						class="flex h-6 cursor-default items-center justify-center bg-white"
 					>
 						<ChevronUp class="size-4" />
 					</SelectScrollUpButton>
@@ -46,7 +46,7 @@
 								name="select_search"
 								placeholder="Search..."
 								type="text"
-								class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:border-transparent outline-none border-gray-300 focus:ring-black text-sm"
+								class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:border-transparent focus:ring-2 focus:ring-black"
 								v-model="searchQuery"
 								@click.stop
 							/>
@@ -56,7 +56,7 @@
 							v-for="item in filteredItems"
 							:key="item.value"
 							:value="item.value"
-							class="relative flex items-center px-8 py-2 rounded-lg cursor-pointer select-none outline-none hover:bg-gray-100 focus:bg-gray-100 data-highlighted:bg-gray-100"
+							class="relative flex cursor-pointer items-center rounded-lg px-8 py-2 outline-none select-none hover:bg-gray-100 focus:bg-gray-100 data-highlighted:bg-gray-100"
 						>
 							<SelectItemIndicator class="absolute left-2 inline-flex items-center">
 								<Check class="size-4" />
@@ -66,7 +66,7 @@
 					</SelectViewport>
 
 					<SelectScrollDownButton
-						class="flex items-center justify-center h-6 bg-white cursor-default"
+						class="flex h-6 cursor-default items-center justify-center bg-white"
 					>
 						<ChevronDown class="size-4" />
 					</SelectScrollDownButton>
@@ -75,7 +75,7 @@
 		</SelectRoot>
 		<span
 			v-if="props.error"
-			class="text-sm text-red-500 mt-1 block"
+			class="mt-1 block text-sm text-red-500"
 		>
 			{{ props.error }}
 		</span>
@@ -83,6 +83,7 @@
 </template>
 
 <script setup lang="ts">
+import { Check, ChevronDown, ChevronUp } from 'lucide-vue-next'
 import {
 	Label,
 	SelectContent,
@@ -98,7 +99,6 @@ import {
 	SelectValue,
 	SelectViewport,
 } from 'reka-ui'
-import { ChevronUp, ChevronDown, Check } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 
 export interface SelectItem {

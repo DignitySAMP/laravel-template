@@ -3,11 +3,11 @@
 		:as="props.as"
 		:as-child="props.asChild"
 		role="alert"
-		class="p-6 border rounded-lg grid grid-cols-[auto_1fr] gap-4 items-center"
+		class="grid grid-cols-[auto_1fr] items-center gap-4 rounded-lg border p-6"
 		:class="[
 			{
-				'bg-black border-gray-800 text-white': props.theme === 'primary',
-				'bg-gray-200 text-gray-800 border-gray-400': props.theme === 'secondary',
+				'border-gray-800 bg-black text-white': props.theme === 'primary',
+				'border-gray-400 bg-gray-200 text-gray-800': props.theme === 'secondary',
 				'border-red-500 bg-red-300 text-red-800': props.theme === 'danger',
 			},
 			props.class,
@@ -29,8 +29,8 @@
 </template>
 
 <script setup lang="ts">
-import { Primitive } from 'reka-ui'
 import { Bell } from 'lucide-vue-next'
+import { Primitive } from 'reka-ui'
 import type { Component } from 'vue'
 
 interface Props {

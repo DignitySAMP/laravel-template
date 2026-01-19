@@ -20,28 +20,26 @@
 				leave-to-class="opacity-0 scale-95"
 			>
 				<DialogContent
-					class="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 mx-4 w-full rounded-md bg-white dark:bg-stone-800 p-6 overflow-y-auto focus:outline-none"
+					class="fixed top-1/2 left-1/2 z-50 mx-4 w-full -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-md bg-white p-6 focus:outline-none dark:bg-stone-800"
 					:class="[props.height, props.width]"
 				>
 					<DialogClose
-						class="absolute right-4 top-4 cursor-pointer rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 disabled:pointer-events-none"
+						class="absolute top-4 right-4 cursor-pointer rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:outline-none disabled:pointer-events-none"
 					>
-						<X
-							class="size-5 hover:scale-125 transition-transform"
-						/>
+						<X class="size-5 transition-transform hover:scale-125" />
 						<span class="sr-only">Close</span>
 					</DialogClose>
 
 					<DialogTitle
 						v-if="props.title"
-						class="text-lg font-semibold mb-4"
+						class="mb-4 text-lg font-semibold"
 					>
 						{{ props.title }}
 					</DialogTitle>
 
 					<DialogDescription
 						v-if="props.description"
-						class="text-sm text-gray-600 dark:text-gray-400 mb-4"
+						class="mb-4 text-sm text-gray-600 dark:text-gray-400"
 					>
 						{{ props.description }}
 					</DialogDescription>

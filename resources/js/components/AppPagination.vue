@@ -27,7 +27,7 @@
 					>
 						<Link
 							:href="link.url"
-							class="cursor-pointer rounded-md border px-4 py-2 shadow-sm select-none transition-colors"
+							class="cursor-pointer rounded-md border px-4 py-2 shadow-sm transition-colors select-none"
 							:class="
 								link.active
 									? 'border-blue-600 bg-blue-600 text-blue-100 hover:bg-blue-700'
@@ -48,9 +48,9 @@
 </template>
 
 <script setup lang="ts">
-import { PaginationList, PaginationListItem, PaginationRoot } from 'reka-ui'
-import { Link } from '@inertiajs/vue3'
 import type { Pagination } from '@/types/pagination'
+import { Link } from '@inertiajs/vue3'
+import { PaginationList, PaginationListItem, PaginationRoot } from 'reka-ui'
 import { computed } from 'vue'
 
 const props = defineProps<Pagination>()

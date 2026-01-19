@@ -2,7 +2,7 @@
 	<div class="w-full">
 		<Label
 			v-if="props.label"
-			class="block text-sm font-medium text-slate-700 mb-2"
+			class="mb-2 block text-sm font-medium text-slate-700"
 		>
 			{{ props.label }}
 		</Label>
@@ -12,17 +12,17 @@
 			:max="props.max"
 			:step="props.step"
 			:disabled="props.disabled"
-			class="relative flex items-center select-none touch-none w-full h-5"
+			class="relative flex h-5 w-full touch-none items-center select-none"
 			@update:model-value="onValueChange"
 		>
-			<SliderTrack class="bg-gray-200 relative grow rounded-full h-1">
-				<SliderRange class="absolute bg-black rounded-full h-full" />
+			<SliderTrack class="relative h-1 grow rounded-full bg-gray-200">
+				<SliderRange class="absolute h-full rounded-full bg-black" />
 			</SliderTrack>
 			<SliderThumb
-				class="block size-5 bg-white border-2 border-black rounded-full shadow hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+				class="block size-5 rounded-full border-2 border-black bg-white shadow hover:bg-gray-50 focus:ring-2 focus:ring-black focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
 			/>
 		</SliderRoot>
-		<div class="flex justify-between items-center mt-2 text-sm text-slate-600">
+		<div class="mt-2 flex items-center justify-between text-sm text-slate-600">
 			<span>{{ formatValue(props.min) }}</span>
 
 			<input
@@ -33,7 +33,7 @@
 				:step="props.step"
 				v-model.number="inputValue"
 				@change="onInputChange"
-				class="w-20 text-center px-2 py-1 border border-gray-300 rounded text-black font-semibold focus:outline-none focus:ring-2 focus:ring-black"
+				class="w-20 rounded border border-gray-300 px-2 py-1 text-center font-semibold text-black focus:ring-2 focus:ring-black focus:outline-none"
 			/>
 
 			<span>{{ formatValue(props.max) }}</span>

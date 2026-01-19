@@ -25,7 +25,7 @@
 				<h1 class="text-lg leading-none font-semibold">
 					{{ modalConfig.title }}
 				</h1>
-				<span class="text-gray-500 text-sm">
+				<span class="text-sm text-gray-500">
 					{{ modalConfig.description }}
 				</span>
 			</div>
@@ -47,7 +47,7 @@
 									v-if="!qrCodeSvg"
 									class="absolute inset-0 z-10 flex aspect-square h-auto w-full animate-pulse items-center justify-center bg-background"
 								>
-									<RotateCw class="animate-spin size-6" />
+									<RotateCw class="size-6 animate-spin" />
 								</div>
 								<div
 									v-else
@@ -85,7 +85,7 @@
 									v-if="!manualSetupKey"
 									class="flex h-full w-full items-center justify-center bg-muted p-3"
 								>
-									<RotateCw class="animate-spin size-6" />
+									<RotateCw class="size-6 animate-spin" />
 								</div>
 								<template v-else>
 									<input
@@ -171,14 +171,14 @@ import { computed, nextTick, ref, useTemplateRef, watch } from 'vue'
 import { confirm } from '@/routes/two-factor'
 import { Form } from '@inertiajs/vue3'
 import { useClipboard } from '@vueuse/core'
-import { Check, Copy, RotateCw, ScanLine } from 'lucide-vue-next';
+import { Check, Copy, RotateCw, ScanLine } from 'lucide-vue-next'
 
 import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth'
 
-import AppModal from '@/components/AppModal.vue'
 import AppAlert from '@/components/AppAlert.vue'
-import AppInputOTP from '@/components/AppInputOTP.vue'
 import AppButton from '@/components/AppButton.vue'
+import AppInputOTP from '@/components/AppInputOTP.vue'
+import AppModal from '@/components/AppModal.vue'
 
 const props = defineProps<{
 	requiresConfirmation: boolean

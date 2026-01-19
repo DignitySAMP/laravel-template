@@ -8,7 +8,7 @@
 			<Label
 				v-if="props.label || $slots.label"
 				:for="getElementId"
-				class="block text-sm font-medium w-full"
+				class="block w-full text-sm font-medium"
 				:class="props.error ? 'text-red-600' : 'text-slate-700'"
 			>
 				<slot name="label">
@@ -39,7 +39,7 @@
 				:autocomplete="props.autocomplete"
 				:required="props.required"
 				v-model="model"
-				class="w-full px-2 py-1 border rounded-lg focus:ring-2 focus:border-transparent outline-none text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+				class="w-full rounded-lg border px-2 py-1 text-sm outline-none focus:border-transparent focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50"
 				:class="
 					props.error
 						? 'border-red-300 focus:ring-red-600'
@@ -62,13 +62,13 @@
 					:is="togglePassword ? EyeOff : Eye"
 					v-if="props.type === 'password'"
 					@click="togglePassword = !togglePassword"
-					class="cursor-pointer size-5 opacity-50 hover:text-neutral-700 transition-colors"
+					class="size-5 cursor-pointer opacity-50 transition-colors hover:text-neutral-700"
 				/>
 			</div>
 		</div>
 		<span
 			v-if="props.error"
-			class="text-sm text-red-500 mt-1 block"
+			class="mt-1 block text-sm text-red-500"
 		>
 			{{ props.error }}
 		</span>
@@ -76,9 +76,9 @@
 </template>
 
 <script setup lang="ts">
+import { Eye, EyeOff, Mail } from 'lucide-vue-next'
 import { Label, Primitive } from 'reka-ui'
 import { computed, ref } from 'vue'
-import { Mail, Eye, EyeOff } from 'lucide-vue-next'
 
 const model = defineModel<string | number>()
 

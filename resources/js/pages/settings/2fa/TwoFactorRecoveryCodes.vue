@@ -1,6 +1,6 @@
 <template>
-	<div class="w-full p-6 shadow-md rounded-lg border border-gray-200">
-		<div class="grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 pt-4 px-4">
+	<div class="w-full rounded-lg border border-gray-200 p-6 shadow-md">
+		<div class="grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-4 pt-4">
 			<span class="flex gap-3 leading-none font-semibold">
 				<Lock class="size-4" />
 				2FA Recovery Codes
@@ -95,15 +95,15 @@
 	</div>
 </template>
 <script setup lang="ts">
-import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
 import { Form } from '@inertiajs/vue3'
+import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
 
 import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth'
 import { regenerateRecoveryCodes } from '@/routes/two-factor'
-import { Eye, EyeOff, Lock, RotateCw } from 'lucide-vue-next' 
+import { Eye, EyeOff, Lock, RotateCw } from 'lucide-vue-next'
 
-import AppButton from '@/components/AppButton.vue'
 import AppAlert from '@/components/AppAlert.vue'
+import AppButton from '@/components/AppButton.vue'
 
 const { recoveryCodesList, fetchRecoveryCodes, errors } = useTwoFactorAuth()
 const isRecoveryCodesVisible = ref<boolean>(false)

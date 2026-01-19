@@ -7,7 +7,7 @@
 		:name="props.name"
 		:type="props.type"
 		:disabled="props.disabled"
-		class="inline-flex items-center justify-center p-2 rounded-lg cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+		class="inline-flex cursor-pointer items-center justify-center rounded-lg p-2 transition-colors disabled:cursor-not-allowed disabled:opacity-50"
 		:class="{
 			'bg-black text-white hover:bg-gray-800': props.theme === 'primary' && !props.disabled,
 			'bg-gray-300 text-gray-800 hover:bg-gray-400':

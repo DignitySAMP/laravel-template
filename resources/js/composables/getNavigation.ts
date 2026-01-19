@@ -1,11 +1,11 @@
-import { Component, computed } from 'vue'
 import { usePage } from '@inertiajs/vue3'
+import { Component, computed } from 'vue'
 
 import { dashboard, home, login, logout, register } from '@/routes'
 import { edit } from '@/routes/profile'
 import { type Method } from '@inertiajs/core'
 
-import { LogIn, UserPlus, House, Gauge, LogOut, ScanFace } from 'lucide-vue-next'
+import { Gauge, House, LogIn, LogOut, ScanFace, UserPlus } from 'lucide-vue-next'
 
 const page = usePage()
 const auth = computed(() => page.props.auth.user)

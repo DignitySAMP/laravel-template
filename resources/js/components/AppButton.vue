@@ -7,7 +7,7 @@
 		:name="props.name"
 		:type="props.type"
 		:disabled="props.disabled"
-		class="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-lg cursor-pointer transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+		class="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg px-4 py-1.5 font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50"
 		:class="[
 			{
 				'bg-black text-white hover:bg-gray-800':
@@ -25,7 +25,7 @@
 			:is="props.iconLeft"
 			class="size-4"
 		/>
-		<span class="select-none text-sm">
+		<span class="text-sm select-none">
 			<slot>{{ props.text }}</slot>
 		</span>
 		<component
