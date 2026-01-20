@@ -50,6 +50,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 | Larastan           | The ESLINT of Laravel: scopes errors or potential code fallbacks by analyzing code                     |
 | Laravel Debugbar   | Shows a debug bar during development when `APP_DEBUG = true`                                           |
 | Laravel IDE Helper | Generates `_ide_helper.php` and `.phpstorm.meta.php` to assist your IDE with auto completion           |
+| Rector             | Refactors code without a fuss. Use the `composer check` to run Rector alongside PHPStan and Pint       |
 
 ### Other configurations
 
