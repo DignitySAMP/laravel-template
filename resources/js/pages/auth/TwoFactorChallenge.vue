@@ -25,8 +25,8 @@
 import AuthLayout from '@/layouts/AuthLayout.vue'
 import { Head } from '@inertiajs/vue3'
 import { computed, ref } from 'vue'
-import TwoFactorOTP from './2fa/TwoFactorOTP.vue'
-import TwoFactorRecovery from './2fa/TwoFactorRecovery.vue'
+import TwoFactorOTP from '@/pages/auth//2fa/TwoFactorOTP.vue'
+import TwoFactorRecovery from '@/pages/auth/2fa/TwoFactorRecovery.vue'
 
 interface AuthConfigContent {
 	title: string

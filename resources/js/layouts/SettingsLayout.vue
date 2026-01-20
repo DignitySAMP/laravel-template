@@ -35,7 +35,7 @@
 	</div>
 </template>
 <script setup lang="ts">
-import AppPageTitle from '@/components/AppPageTitle.vue'
+import AppPageTitle from '@/components/layout/AppPageTitle.vue'
 import { toUrl, urlIsActive } from '@/lib/utils'
 import { edit as editAppearance } from '@/routes/appearance'
 import { edit as editProfile } from '@/routes/profile'

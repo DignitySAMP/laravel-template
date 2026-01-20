@@ -72,10 +72,10 @@ import { destroy } from '@/actions/App/Http/Controllers/Settings/ProfileControll
 import { useForm } from '@inertiajs/vue3'
 import { ref } from 'vue'
 
-import AppButton from '@/components/AppButton.vue'
-import AppInput from '@/components/AppInput.vue'
+import AppButton from '@/components/forms/AppButton.vue'
+import AppInput from '@/components/forms/AppInput.vue'
 import AppModal from '@/components/AppModal.vue'
-import AppPageTitle from '@/components/AppPageTitle.vue'
+import AppPageTitle from '@/components/layout/AppPageTitle.vue'
 
 const showDeleteModal = ref<boolean>(false)
 

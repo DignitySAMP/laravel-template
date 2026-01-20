@@ -48,8 +48,8 @@
 	</AuthLayout>
 </template>
 <script setup lang="ts">
-import AppButton from '@/components/AppButton.vue'
-import AppInput from '@/components/AppInput.vue'
+import AppButton from '@/components/forms/AppButton.vue'
+import AppInput from '@/components/forms/AppInput.vue'
 import AppLink from '@/components/AppLink.vue'
 import AuthLayout from '@/layouts/AuthLayout.vue'
 import { login } from '@/routes'

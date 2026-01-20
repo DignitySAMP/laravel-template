@@ -167,7 +167,7 @@ import {
 import { enumKeys } from '@/lib/utils'
 import { onMounted, ref } from 'vue'
 
-import AppButton from '@/components/AppButton.vue'
+import AppButton from '@/components/forms/AppButton.vue'
 import AppModal from '@/components/AppModal.vue'
 
 const showCookieMessage = ref<boolean>(false)

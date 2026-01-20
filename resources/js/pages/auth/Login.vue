@@ -87,9 +87,9 @@
 	</AuthBase>
 </template>
 <script setup lang="ts">
-import AppButton from '@/components/AppButton.vue'
-import AppCheckbox from '@/components/AppCheckbox.vue'
-import AppInput from '@/components/AppInput.vue'
+import AppButton from '@/components/forms/AppButton.vue'
+import AppCheckbox from '@/components/forms/AppCheckbox.vue'
+import AppInput from '@/components/forms/AppInput.vue'
 import AppLink from '@/components/AppLink.vue'
 
 import AuthBase from '@/layouts/AuthLayout.vue'

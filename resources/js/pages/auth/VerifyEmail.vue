@@ -37,7 +37,7 @@
 	</AuthLayout>
 </template>
 <script setup lang="ts">
-import AppButton from '@/components/AppButton.vue'
+import AppButton from '@/components/forms/AppButton.vue'
 import AppLink from '@/components/AppLink.vue'
 import AuthLayout from '@/layouts/AuthLayout.vue'
 import { logout } from '@/routes'

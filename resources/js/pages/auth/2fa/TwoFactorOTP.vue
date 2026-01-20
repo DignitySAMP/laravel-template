@@ -21,8 +21,8 @@
 	</form>
 </template>
 <script setup lang="ts">
-import AppButton from '@/components/AppButton.vue'
-import AppInputOTP from '@/components/AppInputOTP.vue'
+import AppButton from '@/components/forms/AppButton.vue'
+import AppInputOTP from '@/components/forms/AppInputOTP.vue'
 import { store } from '@/routes/two-factor/login'
 import { useForm } from '@inertiajs/vue3'
 

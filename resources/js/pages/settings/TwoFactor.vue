@@ -99,11 +99,11 @@ import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'
 
 import AppBadge from '@/components/AppBadge.vue'
-import AppPageTitle from '@/components/AppPageTitle.vue'
+import AppPageTitle from '@/components/layout/AppPageTitle.vue'
 import TwoFactorRecoveryCodes from '@/pages/settings/2fa/TwoFactorRecoveryCodes.vue'
 import TwoFactorSetup from '@/pages/settings/2fa/TwoFactorSetup.vue'
 
-import AppButton from '@/components/AppButton.vue'
+import AppButton from '@/components/forms/AppButton.vue'
 
 interface Props {
 	requiresConfirmation?: boolean

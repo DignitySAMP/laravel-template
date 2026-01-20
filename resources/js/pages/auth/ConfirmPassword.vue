@@ -37,8 +37,8 @@
 	</AuthLayout>
 </template>
 <script setup lang="ts">
-import AppButton from '@/components/AppButton.vue'
-import AppInput from '@/components/AppInput.vue'
+import AppButton from '@/components/forms/AppButton.vue'
+import AppInput from '@/components/forms/AppInput.vue'
 import AuthLayout from '@/layouts/AuthLayout.vue'
 import { store } from '@/routes/password/confirm'
 import { Form, Head } from '@inertiajs/vue3'

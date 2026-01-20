@@ -103,7 +103,7 @@ import { regenerateRecoveryCodes } from '@/routes/two-factor'
 import { Eye, EyeOff, Lock, RotateCw } from 'lucide-vue-next'
 
 import AppAlert from '@/components/AppAlert.vue'
-import AppButton from '@/components/AppButton.vue'
+import AppButton from '@/components/forms/AppButton.vue'
 
 const { recoveryCodesList, fetchRecoveryCodes, errors } = useTwoFactorAuth()
 const isRecoveryCodesVisible = ref<boolean>(false)

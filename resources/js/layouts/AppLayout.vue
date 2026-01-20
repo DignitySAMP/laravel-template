@@ -52,7 +52,7 @@ const isCurrentRoute = computed(
 	() => (url: NonNullable<InertiaLinkProps['href']>) => urlIsActive(url, usePage().url)
 )
 
-import AppLogo from '@/components/AppLogo.vue'
+import AppLogo from '@/components/layout/AppLogo.vue'
 import AppWrapper from '@/layouts/AppWrapper.vue'
 
 // TODO: Make responsive
