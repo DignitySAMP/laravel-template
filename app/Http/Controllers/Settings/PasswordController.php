@@ -29,8 +29,11 @@ final class PasswordController extends Controller
         /** @var User $user */
         $user = $request->user();
 
+        /** @var string $password */
+        $password = $request->input('password');
+
         $user->update([
-            'password' => bcrypt($request->input('password')),
+            'password' => bcrypt($password),
         ]);
 
         return back()->with('status', 'Password updated successfully.');

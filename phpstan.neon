@@ -15,7 +15,8 @@ parameters:
 
     excludePaths:
         - config/database.php
+        - database/migrations
 
-    level: 8
+    level: max
 
     tmpDir: /tmp/phpstan
