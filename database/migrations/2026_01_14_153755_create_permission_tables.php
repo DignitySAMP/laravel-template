@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Contracts\Cache\Factory;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -114,7 +116,7 @@ return new class extends Migration
         });
 
         resolve(Factory::class)
-            ->store(config('permission.cache.store') != 'default' ? config('permission.cache.store') : null)
+            ->store(config('permission.cache.store') !== 'default' ? config('permission.cache.store') : null)
             ->forget(config('permission.cache.key'));
     }
 
