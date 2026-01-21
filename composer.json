@@ -87,8 +87,8 @@
         ],
         "check": [
             "./vendor/bin/pint",
-            "./vendor/bin/phpstan",
-            "vendor/bin/rector"
+            "./vendor/bin/rector",
+            "./vendor/bin/phpstan"
         ]
     },
     "extra": {
