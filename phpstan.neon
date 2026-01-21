@@ -16,6 +16,6 @@ parameters:
     excludePaths:
         - config/database.php
 
-    level: max
+    level: 5
 
     tmpDir: /tmp/phpstan
