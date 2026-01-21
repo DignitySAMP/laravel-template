@@ -40,10 +40,8 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Configure default application settings, as suggested by vue-starter-kit.
-     *
-     * @return void
      */
-    private function configureDefaults()
+    private function configureDefaults(): void
     {
         Date::use(CarbonImmutable::class);
 
