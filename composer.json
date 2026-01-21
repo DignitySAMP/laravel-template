@@ -20,6 +20,7 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.16",
         "barryvdh/laravel-ide-helper": "^3.6",
+        "driftingly/rector-laravel": "^2.1",
         "fakerphp/faker": "^1.23",
         "larastan/larastan": "^3.0",
         "laravel/boost": "^1.8",
@@ -87,7 +88,7 @@
         "check": [
             "./vendor/bin/pint",
             "./vendor/bin/phpstan analyse",
-            "vendor/bin/rector src --dry-run"
+            "vendor/bin/rector"
         ]
     },
     "extra": {
