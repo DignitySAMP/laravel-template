@@ -38,6 +38,7 @@
         // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
         // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
         "types": [
+            "node",
             "vite/client",
             "./resources/js/types"
         ] /* Specify type package names to be included without being referenced in a source file. */,
@@ -115,6 +116,10 @@
         "resources/js/**/*.ts",
         "resources/js/**/*.d.ts",
         "resources/js/**/*.tsx",
-        "resources/js/**/*.vue"
+        "resources/js/**/*.vue",
+        "tests/e2e/**/*.ts",
+        "playwright.config.ts",
+        "eslint.config.js",
+        "vite.config.ts"
     ]
 }

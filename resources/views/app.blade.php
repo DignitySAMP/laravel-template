@@ -31,7 +31,7 @@
         }
     </style>
 
-    <title inertia>{{ config('app.name', 'Laravel') }}</title>
+    <title data-inertia>{{ config('app.name', 'Laravel') }}</title>
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -41,11 +41,11 @@
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
     @vite(['resources/js/app.ts', "resources/js/pages/{$page['component']}.vue"])
-    @inertiaHead
+    <x-inertia::head />
 </head>
 
 <body class="font-sans antialiased bg-gray-50">
-    @inertia
+    <x-inertia::app />
 </body>
 
 </html>

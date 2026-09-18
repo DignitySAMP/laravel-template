@@ -65,6 +65,7 @@
 							data-test="update-password-button"
 							text="Save Password"
 							name="update-password-button"
+							type="submit"
 						/>
 
 						<Transition

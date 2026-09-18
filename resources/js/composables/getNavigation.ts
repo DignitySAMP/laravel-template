@@ -82,6 +82,5 @@ export const getNavigationItemsForUser = () => {
 		}
 	})
 
-	console.log(userNavItems, auth.value)
 	return userNavItems
 }

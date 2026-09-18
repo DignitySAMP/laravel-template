@@ -34,8 +34,7 @@
 					<AppButton
 						type="submit"
 						theme="secondary"
-						name="btn_toggle_code_visibility"
-						@click="toggleRecoveryCodesVisibility"
+						name="btn_regenerate_codes"
 						text="Regenerate Codes"
 						:icon="RotateCw"
 						class="max-w-52"

@@ -38,7 +38,8 @@
 				:disabled="props.disabled"
 				:autocomplete="props.autocomplete"
 				:required="props.required"
-				v-model="model"
+				:value="model"
+				@input="onInput"
 				class="w-full rounded-lg border px-2 py-1 text-sm outline-none focus:border-transparent focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50"
 				:class="
 					props.error
@@ -111,6 +112,13 @@ const props = withDefaults(defineProps<Props>(), {
 	wrapper: 'div',
 	wrapperAsChild: false,
 })
+
+const onInput = (event: Event): void => {
+	const target = event.target as HTMLInputElement
+
+	model.value =
+		props.type === 'number' && target.value !== '' ? target.valueAsNumber : target.value
+}
 
 const togglePassword = ref<boolean>(false)
 const getElementId = computed((): string => props.id ?? props.name)

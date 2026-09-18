@@ -93,7 +93,7 @@ import { onUnmounted, ref } from 'vue'
 
 import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth'
 import { disable, enable } from '@/routes/two-factor'
-import { ShieldBan, ShieldCheck } from 'lucide-vue-next';
+import { ShieldBan, ShieldCheck } from 'lucide-vue-next'
 
 import AppLayout from '@/layouts/AppLayout.vue'
 import SettingsLayout from '@/layouts/SettingsLayout.vue'
