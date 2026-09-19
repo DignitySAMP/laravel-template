@@ -16,6 +16,7 @@ export const e2eEnv: Record<string, string> = {
 	DB_BUSY_TIMEOUT: '10000',
 	DB_JOURNAL_MODE: 'WAL',
 	DB_SYNCHRONOUS: 'NORMAL',
+	DB_TRANSACTION_MODE: 'IMMEDIATE',
 	MAIL_MAILER: 'array',
 	INERTIA_SSR_ENABLED: 'false',
 	QUEUE_CONNECTION: 'sync',
