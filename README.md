@@ -14,7 +14,7 @@ Everything is covered by feature tests and a Playwright end-to-end suite.
 
 ## Requirements
 
-- PHP 8.3 or higher
+- PHP 8.4.1 or higher
 - Node 22.13 or higher (24 LTS is used in CI)
 - Composer 2
 
