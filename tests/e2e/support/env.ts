@@ -13,13 +13,17 @@ export const e2eEnv: Record<string, string> = {
 	APP_URL: E2E_BASE_URL,
 	DB_CONNECTION: 'sqlite',
 	DB_DATABASE: databasePath,
+	DB_BUSY_TIMEOUT: '10000',
+	DB_JOURNAL_MODE: 'WAL',
+	DB_SYNCHRONOUS: 'NORMAL',
 	MAIL_MAILER: 'array',
+	INERTIA_SSR_ENABLED: 'false',
 	QUEUE_CONNECTION: 'sync',
 	CACHE_STORE: 'database',
 	SESSION_DRIVER: 'database',
 	BCRYPT_ROUNDS: '4',
 	DEBUGBAR_ENABLED: 'false',
-	PHP_CLI_SERVER_WORKERS: '4',
+	PHP_CLI_SERVER_WORKERS: '16',
 }
 
 export const ensureDatabaseFile = (): void => {

@@ -10,12 +10,12 @@ export default defineConfig({
 	fullyParallel: true,
 	forbidOnly: !!process.env.CI,
 	retries: process.env.CI ? 2 : 0,
-	workers: process.env.CI ? 2 : undefined,
+	workers: process.env.CI ? 2 : 4,
 	reporter: process.env.CI
 		? [['github'], ['html', { outputFolder: './tests/e2e/.report', open: 'never' }]]
 		: [['list']],
 	timeout: 30_000,
-	expect: { timeout: 10_000 },
+	expect: { timeout: 15_000 },
 	use: {
 		baseURL: E2E_BASE_URL,
 		trace: 'retain-on-failure',

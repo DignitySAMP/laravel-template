@@ -5,7 +5,6 @@ declare(strict_types=1);
 use App\Models\User;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\URL;
@@ -37,7 +36,6 @@ $present = (static fn (User $user): array => [
 
 $result = match ($command) {
     'migrate' => (function () use ($app): array {
-        DB::statement('PRAGMA journal_mode=WAL');
         $app->make(Kernel::class)->call('migrate:fresh', ['--force' => true]);
 
         return ['migrated' => true];
