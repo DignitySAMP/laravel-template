@@ -1,5 +1,5 @@
 import { qrCode, recoveryCodes, secretKey } from '@/routes/two-factor'
-import { computed, ref } from 'vue'
+import { computed, getCurrentInstance, ref, type App } from 'vue'
 
 const fetchJson = async <T>(url: string): Promise<T> => {
 	const response = await fetch(url, {
@@ -13,16 +13,16 @@ const fetchJson = async <T>(url: string): Promise<T> => {
 	return response.json()
 }
 
-const errors = ref<string[]>([])
-const manualSetupKey = ref<string | null>(null)
-const qrCodeSvg = ref<string | null>(null)
-const recoveryCodesList = ref<string[]>([])
+const createTwoFactorAuth = () => {
+	const errors = ref<string[]>([])
+	const manualSetupKey = ref<string | null>(null)
+	const qrCodeSvg = ref<string | null>(null)
+	const recoveryCodesList = ref<string[]>([])
 
-const hasSetupData = computed<boolean>(
-	() => qrCodeSvg.value !== null && manualSetupKey.value !== null
-)
+	const hasSetupData = computed<boolean>(
+		() => qrCodeSvg.value !== null && manualSetupKey.value !== null
+	)
 
-export const useTwoFactorAuth = () => {
 	const fetchQrCode = async (): Promise<void> => {
 		try {
 			const { svg } = await fetchJson<{ svg: string; url: string }>(qrCode.url())
@@ -45,14 +45,14 @@ export const useTwoFactorAuth = () => {
 		}
 	}
 
+	const clearErrors = (): void => {
+		errors.value = []
+	}
+
 	const clearSetupData = (): void => {
 		manualSetupKey.value = null
 		qrCodeSvg.value = null
 		clearErrors()
-	}
-
-	const clearErrors = (): void => {
-		errors.value = []
 	}
 
 	const clearTwoFactorAuthData = (): void => {
@@ -95,4 +95,25 @@ export const useTwoFactorAuth = () => {
 		fetchSetupData,
 		fetchRecoveryCodes,
 	}
+}
+
+const instances = new WeakMap<App, ReturnType<typeof createTwoFactorAuth>>()
+
+export const useTwoFactorAuth = (): ReturnType<typeof createTwoFactorAuth> => {
+	const app = getCurrentInstance()?.appContext.app
+
+	if (!app) {
+		return createTwoFactorAuth()
+	}
+
+	const existing = instances.get(app)
+
+	if (existing) {
+		return existing
+	}
+
+	const created = createTwoFactorAuth()
+	instances.set(app, created)
+
+	return created
 }

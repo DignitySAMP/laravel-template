@@ -1,14 +1,11 @@
 import { usePage } from '@inertiajs/vue3'
-import { Component, computed } from 'vue'
+import { Component } from 'vue'
 
 import { dashboard, home, login, logout, register } from '@/routes'
 import { edit } from '@/routes/profile'
 import { type Method } from '@inertiajs/core'
 
 import { Gauge, House, LogIn, LogOut, ScanFace, UserPlus } from 'lucide-vue-next'
-
-const page = usePage()
-const auth = computed(() => page.props.auth.user)
 
 export interface NavigationItems {
 	title: string
@@ -18,7 +15,7 @@ export interface NavigationItems {
 	auth: boolean | null
 }
 
-export const authNavItems: NavigationItems[] = [
+export const authNavItems = (): NavigationItems[] => [
 	// all
 	{
 		title: 'Home',
@@ -63,24 +60,10 @@ export const authNavItems: NavigationItems[] = [
 	},
 ]
 
-export const getNavigationItemsForUser = () => {
-	const userNavItems: NavigationItems[] = []
+export const getNavigationItemsForUser = (): NavigationItems[] => {
+	const isAuthenticated = Boolean(usePage().props.auth.user)
 
-	authNavItems.forEach((navItem) => {
-		if (navItem.auth === null) {
-			userNavItems.push(navItem)
-		} else {
-			if (auth.value) {
-				if (navItem.auth) {
-					userNavItems.push(navItem)
-				}
-			} else {
-				if (!navItem.auth) {
-					userNavItems.push(navItem)
-				}
-			}
-		}
-	})
-
-	return userNavItems
+	return authNavItems().filter(
+		(navItem) => navItem.auth === null || navItem.auth === isAuthenticated
+	)
 }
