@@ -22,7 +22,7 @@ $app->make(Kernel::class)->bootstrap();
 $command = $argv[1] ?? '';
 $input = json_decode($argv[2] ?? '{}', true, 512, JSON_THROW_ON_ERROR);
 
-$currentOtp = (static fn (User $user): string => (new Google2FA())->getCurrentOtp(decrypt($user->two_factor_secret)));
+$currentOtp = (static fn (User $user): string => new Google2FA()->getCurrentOtp(decrypt($user->two_factor_secret)));
 
 $findUser = (static fn (array $input): User => User::query()->where('email', $input['email'])->sole());
 
