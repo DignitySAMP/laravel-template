@@ -26,6 +26,10 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+/.claude
+/.mcp.json
+/CLAUDE.md
+/boost.json
 _ide_helper.php
 /tests/e2e/.results
 /tests/e2e/.report

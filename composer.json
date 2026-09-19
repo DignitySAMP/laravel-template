@@ -1,11 +1,15 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/vue-starter-kit",
+    "name": "dignitysamp/laravel-template",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "An opinionated Laravel, Inertia and Vue starter template.",
     "keywords": [
         "laravel",
-        "framework"
+        "vue",
+        "inertia",
+        "tailwindcss",
+        "starter-kit",
+        "template"
     ],
     "license": "MIT",
     "require": {
